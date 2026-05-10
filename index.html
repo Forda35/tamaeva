@@ -160,8 +160,9 @@ html[data-lang="de"] .fr, html[data-lang="de"] .en { display: none !important; }
   left: 0;
   right: 0;
   z-index: 150;
+  display: flex;
+  flex-direction: column;
   transition: background 0.4s, box-shadow 0.4s;
-  /* offset for lang-bar + ticker: both are position:relative so header sits below them when not fixed */
 }
 .site-header.scrolled {
   background: rgba(10,20,14,0.96);
@@ -327,7 +328,7 @@ html[data-lang="de"] .fr, html[data-lang="de"] .en { display: none !important; }
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  padding: 120px 24px 80px;
+  padding: 160px 24px 80px;
 }
 /* Geometric texture overlay */
 .hero-texture {
@@ -1020,48 +1021,49 @@ footer {
   <button class="lang-btn" onclick="setLang('de')" aria-label="Deutsch">DE</button>
 </div>
 
-<!-- ============ BREAKING NEWS TICKER ============ -->
-<div class="ticker-wrap" role="marquee" aria-label="Actualités en direct">
-  <div class="ticker-label">
-    <ion-icon name="radio-outline" aria-hidden="true"></ion-icon>
-    <span class="fr">Actus</span>
-    <span class="en">News</span>
-    <span class="de">News</span>
-  </div>
-  <div class="ticker-track">
-    <!-- FR items -->
-    <span class="ticker-item fr">TK Week — 20% de réduction sur toutes les prestations culturelles ce mois-ci <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item fr">Nouvelle session tressage traditionnel — Samedi 17 mai 2026 <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item fr">Atelier cuisine polynésienne — places limitées à 8 participants <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item fr">Heiva Moorea — Inscriptions ouvertes pour juin 2026 <span class="ticker-sep">&#9670;</span></span>
-    <!-- EN items -->
-    <span class="ticker-item en">TK Week — 20% off all cultural services this month <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item en">New traditional weaving session — Saturday 17 May 2026 <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item en">Polynesian cooking workshop — limited to 8 participants <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item en">Heiva Moorea — Registrations open for June 2026 <span class="ticker-sep">&#9670;</span></span>
-    <!-- DE items -->
-    <span class="ticker-item de">TK Woche — 20% Rabatt auf alle Kulturleistungen diesen Monat <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item de">Neuer traditioneller Flechtworkshop — Samstag, 17. Mai 2026 <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item de">Polynesischer Kochkurs — begrenzt auf 8 Teilnehmer <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item de">Heiva Moorea — Anmeldungen für Juni 2026 offen <span class="ticker-sep">&#9670;</span></span>
-    <!-- Duplicate for seamless loop -->
-    <span class="ticker-item fr">TK Week — 20% de réduction sur toutes les prestations culturelles ce mois-ci <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item fr">Nouvelle session tressage traditionnel — Samedi 17 mai 2026 <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item fr">Atelier cuisine polynésienne — places limitées à 8 participants <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item fr">Heiva Moorea — Inscriptions ouvertes pour juin 2026 <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item en">TK Week — 20% off all cultural services this month <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item en">New traditional weaving session — Saturday 17 May 2026 <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item en">Polynesian cooking workshop — limited to 8 participants <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item en">Heiva Moorea — Registrations open for June 2026 <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item de">TK Woche — 20% Rabatt auf alle Kulturleistungen diesen Monat <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item de">Neuer traditioneller Flechtworkshop — Samstag, 17. Mai 2026 <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item de">Polynesischer Kochkurs — begrenzt auf 8 Teilnehmer <span class="ticker-sep">&#9670;</span></span>
-    <span class="ticker-item de">Heiva Moorea — Anmeldungen für Juni 2026 offen <span class="ticker-sep">&#9670;</span></span>
-  </div>
-</div>
-
 <!-- ============ HEADER ============ -->
 <header class="site-header" id="site-header">
+
+  <!-- ============ BREAKING NEWS TICKER ============ -->
+  <div class="ticker-wrap" role="marquee" aria-label="Actualités en direct">
+    <div class="ticker-label">
+      <ion-icon name="radio-outline" aria-hidden="true"></ion-icon>
+      <span class="fr">Actus</span>
+      <span class="en">News</span>
+      <span class="de">News</span>
+    </div>
+    <div class="ticker-track">
+      <!-- FR items -->
+      <span class="ticker-item fr">TK Week — 20% de réduction sur toutes les prestations culturelles ce mois-ci <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Nouvelle session tressage traditionnel — Samedi 17 mai 2026 <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Atelier cuisine polynésienne — places limitées à 8 participants <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Heiva Moorea — Inscriptions ouvertes pour juin 2026 <span class="ticker-sep">&#9670;</span></span>
+      <!-- EN items -->
+      <span class="ticker-item en">TK Week — 20% off all cultural services this month <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">New traditional weaving session — Saturday 17 May 2026 <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">Polynesian cooking workshop — limited to 8 participants <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">Heiva Moorea — Registrations open for June 2026 <span class="ticker-sep">&#9670;</span></span>
+      <!-- DE items -->
+      <span class="ticker-item de">TK Woche — 20% Rabatt auf alle Kulturleistungen diesen Monat <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">Neuer traditioneller Flechtworkshop — Samstag, 17. Mai 2026 <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">Polynesischer Kochkurs — begrenzt auf 8 Teilnehmer <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">Heiva Moorea — Anmeldungen für Juni 2026 offen <span class="ticker-sep">&#9670;</span></span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item fr">TK Week — 20% de réduction sur toutes les prestations culturelles ce mois-ci <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Nouvelle session tressage traditionnel — Samedi 17 mai 2026 <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Atelier cuisine polynésienne — places limitées à 8 participants <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Heiva Moorea — Inscriptions ouvertes pour juin 2026 <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">TK Week — 20% off all cultural services this month <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">New traditional weaving session — Saturday 17 May 2026 <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">Polynesian cooking workshop — limited to 8 participants <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">Heiva Moorea — Registrations open for June 2026 <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">TK Woche — 20% Rabatt auf alle Kulturleistungen diesen Monat <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">Neuer traditioneller Flechtworkshop — Samstag, 17. Mai 2026 <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">Polynesischer Kochkurs — begrenzt auf 8 Teilnehmer <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">Heiva Moorea — Anmeldungen für Juni 2026 offen <span class="ticker-sep">&#9670;</span></span>
+    </div>
+  </div>
+
   <div class="header-inner">
 
     <!-- Logo -->
