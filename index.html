@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO FR (default) -->
+<title>Tamaeva — Tupuna Kultur | Immersion Culturelle Polynésienne à Moorea</title>
+<meta name="description" content="Vivez la vraie Polynésie à Moorea. Ateliers traditionnels, immersions culturelles et transmissions ancestrales avec Brenda. Réservez votre expérience unique.">
+<meta name="keywords" content="culture polynésienne Moorea, atelier traditionnel Tahiti, immersion culturelle Polynésie, Tupuna Kultur, Tamaeva Moorea, tour immersion Moorea">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tamaeva.fr/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Tamaeva — Tupuna Kultur | Moorea, Polynésie Française">
+<meta property="og:description" content="Vivez la vraie Polynésie : immersion, ateliers, transmission ancestrale à Moorea avec Brenda.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tamaeva.fr/">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Ionicons -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+
+<style>
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Jost', sans-serif; background: #fdf6e8; color: #1a1a18; overflow-x: hidden; }
+a { text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* =============================================
+   DESIGN TOKENS
+   ============================================= */
+:root {
+  --forest:       #1a3325;
+  --forest-deep:  #0f1f17;
+  --forest-mid:   #2d5040;
+  --forest-light: #3d6b54;
+  --gold:         #c8973a;
+  --gold-light:   #e8c068;
+  --gold-pale:    #f5e4b8;
+  --cream:        #fdf6e8;
+  --cream-mid:    #f5e8cf;
+  --cream-dark:   #ecddbf;
+  --rust:         #ab4a1a;
+  --rust-light:   #c5622d;
+  --white:        #ffffff;
+  --text-dark:    #1a1a18;
+  --text-mid:     #3d3d35;
+  --text-muted:   #7a7a6e;
+  --header-h:     80px;
+}
+
+/* =============================================
+   MULTILANG — CSS CLASS APPROACH
+   ============================================= */
+/* Default: show FR, hide EN/DE */
+html[data-lang="fr"] .en, html[data-lang="fr"] .de { display: none !important; }
+html[data-lang="en"] .fr, html[data-lang="en"] .de { display: none !important; }
+html[data-lang="de"] .fr, html[data-lang="de"] .en { display: none !important; }
+
+/* =============================================
+   LANG BAR
+   ============================================= */
+.lang-bar {
+  background: var(--forest-deep);
+  padding: 7px 48px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  z-index: 200;
+}
+.lang-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: rgba(255,255,255,0.45);
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 5px 11px;
+  border-radius: 2px;
+  transition: all 0.2s;
+  line-height: 1;
+}
+.lang-btn:hover { color: var(--gold-light); border-color: rgba(200,151,58,0.4); }
+.lang-btn.active { color: var(--gold-light); border-color: var(--gold); background: rgba(200,151,58,0.08); }
+
+/* =============================================
+   BREAKING NEWS TICKER
+   ============================================= */
+.ticker-wrap {
+  background: var(--gold);
+  overflow: hidden;
+  height: 36px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.ticker-label {
+  background: var(--rust);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 0 18px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+}
+.ticker-label ion-icon { font-size: 12px; }
+.ticker-track {
+  display: flex;
+  animation: ticker-scroll 32s linear infinite;
+  will-change: transform;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--forest-deep);
+  padding: 0 56px;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ticker-sep { color: var(--rust); font-size: 10px; }
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  transition: background 0.4s, box-shadow 0.4s;
+  /* offset for lang-bar + ticker: both are position:relative so header sits below them when not fixed */
+}
+.site-header.scrolled {
+  background: rgba(10,20,14,0.96);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(200,151,58,0.15);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+}
+.logo-ring {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--forest-deep);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.logo-words { display: flex; flex-direction: column; line-height: 1; }
+.logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px; font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.logo-tagline {
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-top: 3px;
+}
+/* Main nav */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-link {
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 2px;
+  white-space: nowrap;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+.nav-link:hover { color: var(--gold-light); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link.active { color: var(--gold-light); }
+.nav-cta {
+  background: var(--gold);
+  color: var(--forest-deep);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 11px 24px;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+/* Burger */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+}
+.burger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s;
+  transform-origin: center;
+}
+.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile drawer */
+.mobile-drawer {
+  position: fixed;
+  top: 0; right: 0;
+  width: min(320px, 85vw);
+  height: 100dvh;
+  background: var(--forest-deep);
+  z-index: 300;
+  transform: translateX(110%);
+  transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+  padding: 100px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 1px solid rgba(200,151,58,0.15);
+  overflow-y: auto;
+}
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer .nav-link { font-size: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: block; }
+.mobile-drawer .nav-cta { margin-top: 20px; display: inline-block; padding: 14px 32px; }
+.drawer-close {
+  position: absolute;
+  top: 22px; right: 24px;
+  background: none; border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.drawer-close:hover { color: var(--white); }
+.drawer-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 250;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.38s;
+}
+.drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+/* =============================================
+   HERO — full-screen, immersive
+   ============================================= */
+.hero {
+  min-height: 100svh;
+  background: var(--forest-deep);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 120px 24px 80px;
+}
+/* Geometric texture overlay */
+.hero-texture {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      60deg,
+      transparent,
+      transparent 120px,
+      rgba(200,151,58,0.025) 120px,
+      rgba(200,151,58,0.025) 121px
+    ),
+    repeating-linear-gradient(
+      -60deg,
+      transparent,
+      transparent 120px,
+      rgba(200,151,58,0.025) 120px,
+      rgba(200,151,58,0.025) 121px
+    );
+}
+/* Radial glow */
+.hero-glow {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(45,80,64,0.7) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(171,74,26,0.12) 0%, transparent 60%);
+}
+/* Decorative leaf shapes */
+.hero-leaf {
+  position: absolute;
+  border-radius: 50% 8% 50% 8%;
+  background: rgba(200,151,58,0.04);
+  pointer-events: none;
+}
+.hero-leaf-1 { width: 260px; height: 400px; top: -60px; left: -80px; transform: rotate(-25deg); }
+.hero-leaf-2 { width: 200px; height: 320px; bottom: -80px; right: -40px; transform: rotate(155deg); opacity: 0.6; }
+.hero-leaf-3 { width: 80px; height: 130px; top: 30%; right: 12%; transform: rotate(40deg); opacity: 0.5; }
+
+/* Ornament line */
+.hero-ornament {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px;
+  margin: 18px 0 22px;
+}
+.hero-ornament::before, .hero-ornament::after {
+  content: ''; flex: 1; max-width: 70px;
+  height: 1px; background: var(--gold); opacity: 0.5;
+}
+.ornament-diamond {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.8;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 860px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,151,58,0.12);
+  border: 1px solid rgba(200,151,58,0.35);
+  color: var(--gold-light);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 7px 20px;
+  border-radius: 24px;
+  margin-bottom: 32px;
+  animation: fade-down 0.9s ease both;
+}
+.hero-badge ion-icon { font-size: 13px; }
+
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(54px, 9vw, 100px);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.04;
+  letter-spacing: -0.5px;
+  animation: fade-down 0.9s 0.1s ease both;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+  display: block;
+}
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  max-width: 580px;
+  margin: 0 auto 44px;
+  line-height: 1.75;
+  letter-spacing: 0.2px;
+  animation: fade-down 0.9s 0.2s ease both;
+}
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fade-down 0.9s 0.3s ease both;
+}
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--gold);
+  color: var(--forest-deep);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 15px 32px;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  border: none; cursor: pointer;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-gold ion-icon { font-size: 16px; }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: transparent;
+  color: var(--white);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 15px 32px;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+.btn-ghost ion-icon { font-size: 16px; }
+
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.3);
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  animation: fade-down 1s 0.6s ease both;
+}
+.scroll-track {
+  width: 1px; height: 44px;
+  background: linear-gradient(to bottom, transparent, rgba(200,151,58,0.6));
+  animation: scroll-pulse 2.2s ease-in-out infinite;
+}
+@keyframes scroll-pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+/* =============================================
+   HERO ENTRY ANIMATIONS
+   ============================================= */
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================================
+   REVEAL ON SCROLL
+   ============================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* =============================================
+   SHARED SECTION UTILITIES
+   ============================================= */
+section { padding: 110px 48px; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.sec-label {
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: block;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4.5vw, 56px);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--text-dark);
+}
+.sec-title.light { color: var(--white); }
+.gold-rule {
+  display: flex; align-items: center; gap: 12px;
+  margin: 18px 0 0;
+}
+.gold-rule span {
+  width: 48px; height: 1px;
+  background: var(--gold); opacity: 0.6;
+}
+.gold-rule i {
+  width: 7px; height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  display: block;
+  border-radius: 1px;
+}
+
+/* =============================================
+   WELCOME STRIP — brief intro
+   ============================================= */
+.welcome-strip {
+  background: var(--cream);
+  padding: 90px 48px;
+}
+.welcome-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+.welcome-body p {
+  font-size: 16.5px; font-weight: 300;
+  line-height: 1.82; color: var(--text-mid);
+  margin-top: 20px;
+}
+.welcome-link {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-top: 32px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--forest);
+  border-bottom: 1px solid var(--forest);
+  padding-bottom: 3px;
+  transition: color 0.2s, border-color 0.2s, gap 0.2s;
+}
+.welcome-link:hover { color: var(--gold); border-color: var(--gold); gap: 14px; }
+.welcome-link ion-icon { font-size: 15px; }
+/* Stats grid */
+.stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.stat-card {
+  border-left: 2px solid var(--gold);
+  padding: 4px 0 4px 18px;
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px; font-weight: 600;
+  color: var(--forest); line-height: 1;
+}
+.stat-label {
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-muted); margin-top: 5px;
+}
+
+/* =============================================
+   SERVICES PREVIEW
+   ============================================= */
+.services-preview {
+  background: var(--forest);
+  padding: 110px 48px;
+}
+.services-header {
+  text-align: center;
+  max-width: 620px; margin: 0 auto 72px;
+}
+.services-header .gold-rule { justify-content: center; }
+.services-header p {
+  font-size: 15.5px; font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  margin-top: 18px; line-height: 1.75;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  max-width: 1200px; margin: 0 auto;
+}
+.svc-card {
+  background: var(--forest);
+  padding: 48px 38px 42px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.svc-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s;
+}
+.svc-card:hover { background: var(--forest-mid); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px; font-weight: 600;
+  color: rgba(200,151,58,0.1);
+  line-height: 1;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+.svc-card:hover .svc-num { color: rgba(200,151,58,0.18); }
+.svc-icon {
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+.svc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 600;
+  color: var(--white); line-height: 1.2;
+  margin-bottom: 14px;
+}
+.svc-desc {
+  font-size: 14px; font-weight: 300;
+  color: rgba(255,255,255,0.58);
+  line-height: 1.72;
+  margin-bottom: 32px;
+}
+.svc-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--gold);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  transition: gap 0.25s;
+}
+.svc-link:hover { gap: 14px; }
+.svc-link ion-icon { font-size: 16px; }
+/* CTA below grid */
+.services-cta {
+  text-align: center;
+  margin-top: 52px;
+}
+.btn-gold-outline {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: transparent;
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 15px 36px; border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-gold-outline:hover { background: var(--gold); color: var(--forest-deep); }
+.btn-gold-outline ion-icon { font-size: 16px; }
+
+/* =============================================
+   ABOUT TEASER
+   ============================================= */
+.about-teaser {
+  background: var(--forest-deep);
+  padding: 110px 48px;
+}
+.about-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img-box {
+  border-radius: 3px; overflow: hidden;
+  background: var(--forest-mid);
+  aspect-ratio: 4/5;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 10px;
+  color: rgba(255,255,255,0.2);
+  font-size: 12px; letter-spacing: 1px;
+}
+.about-img-box ion-icon { font-size: 40px; opacity: 0.3; }
+.about-badge {
+  position: absolute;
+  bottom: -18px; right: -18px;
+  background: var(--gold);
+  padding: 20px 26px;
+  border-radius: 2px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.about-badge-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 600;
+  color: var(--forest-deep); line-height: 1;
+}
+.about-badge-sub {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--forest); margin-top: 4px;
+}
+.about-text p {
+  font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.82; margin-top: 18px;
+}
+.values-list { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+.value-row {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 14px; font-weight: 400;
+  color: rgba(255,255,255,0.75);
+}
+.value-row ion-icon { font-size: 16px; color: var(--gold); flex-shrink: 0; }
+.about-link {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-top: 36px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--gold-light);
+  border-bottom: 1px solid rgba(200,151,58,0.4);
+  padding-bottom: 3px;
+  transition: gap 0.2s, border-color 0.2s;
+}
+.about-link:hover { gap: 14px; border-color: var(--gold-light); }
+.about-link ion-icon { font-size: 15px; }
+
+/* =============================================
+   TESTIMONIALS STRIP
+   ============================================= */
+.testimonials {
+  background: var(--cream);
+  padding: 110px 48px;
+}
+.testi-header {
+  text-align: center;
+  max-width: 580px; margin: 0 auto 64px;
+}
+.testi-header .gold-rule { justify-content: center; }
+.testi-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.testi-card {
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 3px 3px 0;
+  padding: 34px;
+  transition: box-shadow 0.3s;
+}
+.testi-card:hover { box-shadow: 0 6px 30px rgba(0,0,0,0.07); }
+.testi-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 600;
+  color: var(--gold); line-height: 1;
+  margin-bottom: 6px;
+}
+.testi-body {
+  font-size: 15px; font-weight: 300;
+  font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
+.testi-author { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: var(--forest); }
+.testi-origin { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+/* =============================================
+   NEWS PREVIEW
+   ============================================= */
+.news-preview {
+  background: var(--forest-deep);
+  padding: 110px 48px;
+}
+.news-header {
+  max-width: 1200px; margin: 0 auto 56px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.news-header-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); flex-shrink: 0;
+  border-bottom: 1px solid rgba(200,151,58,0.35);
+  padding-bottom: 3px;
+  transition: gap 0.2s;
+}
+.news-header-link:hover { gap: 13px; }
+.news-header-link ion-icon { font-size: 15px; }
+.news-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.news-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 3px; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.news-card:hover { border-color: rgba(200,151,58,0.35); transform: translateY(-3px); }
+.news-thumb {
+  height: 190px;
+  background: var(--forest-mid);
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.news-thumb ion-icon { font-size: 36px; color: rgba(255,255,255,0.15); }
+.news-tag {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--gold);
+  color: var(--forest-deep);
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 11px; border-radius: 2px;
+}
+.news-body { padding: 26px; }
+.news-date {
+  font-size: 11px; color: rgba(255,255,255,0.35);
+  letter-spacing: 1px; margin-bottom: 9px;
+}
+.news-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px; font-weight: 600;
+  color: var(--white); line-height: 1.28;
+  margin-bottom: 11px;
+}
+.news-excerpt {
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.5); line-height: 1.65;
+}
+
+/* =============================================
+   BOOKING CTA BAND
+   ============================================= */
+.booking-band {
+  background: var(--gold);
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.booking-band::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent, transparent 30px,
+      rgba(255,255,255,0.04) 30px, rgba(255,255,255,0.04) 31px
+    );
+}
+.booking-band-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.booking-band-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 58px); font-weight: 600;
+  color: var(--forest-deep); line-height: 1.1;
+  margin-bottom: 14px;
+}
+.booking-band-sub {
+  font-size: 16px; font-weight: 300;
+  color: rgba(15,31,23,0.75); line-height: 1.7;
+  margin-bottom: 36px;
+}
+.btn-dark {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--forest-deep);
+  color: var(--gold-light);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 16px 38px; border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  border: none; cursor: pointer;
+}
+.btn-dark:hover { background: var(--forest); transform: translateY(-2px); }
+.btn-dark ion-icon { font-size: 17px; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: var(--forest-deep);
+  border-top: 1px solid rgba(200,151,58,0.15);
+  padding: 80px 48px 36px;
+}
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+.footer-brand-desc {
+  font-size: 13.5px; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.75; margin-top: 18px;
+  max-width: 290px;
+}
+.footer-col h4 {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.footer-col ul li a {
+  font-size: 13.5px; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--gold-light); }
+.footer-col p {
+  font-size: 13.5px; font-weight: 300;
+  color: rgba(255,255,255,0.5); line-height: 1.8;
+}
+.footer-contact-row {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13.5px; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;
+}
+.footer-contact-row ion-icon { font-size: 15px; color: var(--gold); flex-shrink: 0; }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 28px;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p {
+  font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,0.28); letter-spacing: 0.3px;
+}
+.footer-bottom a { color: rgba(200,151,58,0.65); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold-light); }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  section, .welcome-strip, .services-preview, .about-teaser, .testimonials, .news-preview, .booking-band, footer { padding: 70px 24px; }
+  .lang-bar { padding: 7px 24px; }
+  .header-inner { padding: 0 24px; }
+  .main-nav { display: none; }
+  .burger { display: flex; }
+  .welcome-inner, .about-inner { grid-template-columns: 1fr; gap: 50px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .news-header { flex-direction: column; align-items: flex-start; }
+  .about-badge { right: 0; bottom: -16px; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+}
+@media (max-width: 540px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============ LANG BAR ============ -->
+<div class="lang-bar" role="navigation" aria-label="Sélection de langue">
+  <button class="lang-btn active" onclick="setLang('fr')" aria-label="Français">FR</button>
+  <button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button>
+  <button class="lang-btn" onclick="setLang('de')" aria-label="Deutsch">DE</button>
+</div>
+
+<!-- ============ BREAKING NEWS TICKER ============ -->
+<div class="ticker-wrap" role="marquee" aria-label="Actualités en direct">
+  <div class="ticker-label">
+    <ion-icon name="radio-outline" aria-hidden="true"></ion-icon>
+    <span class="fr">Actus</span>
+    <span class="en">News</span>
+    <span class="de">News</span>
+  </div>
+  <div class="ticker-track">
+    <!-- FR items -->
+    <span class="ticker-item fr">TK Week — 20% de réduction sur toutes les prestations culturelles ce mois-ci <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item fr">Nouvelle session tressage traditionnel — Samedi 17 mai 2026 <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item fr">Atelier cuisine polynésienne — places limitées à 8 participants <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item fr">Heiva Moorea — Inscriptions ouvertes pour juin 2026 <span class="ticker-sep">&#9670;</span></span>
+    <!-- EN items -->
+    <span class="ticker-item en">TK Week — 20% off all cultural services this month <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item en">New traditional weaving session — Saturday 17 May 2026 <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item en">Polynesian cooking workshop — limited to 8 participants <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item en">Heiva Moorea — Registrations open for June 2026 <span class="ticker-sep">&#9670;</span></span>
+    <!-- DE items -->
+    <span class="ticker-item de">TK Woche — 20% Rabatt auf alle Kulturleistungen diesen Monat <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item de">Neuer traditioneller Flechtworkshop — Samstag, 17. Mai 2026 <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item de">Polynesischer Kochkurs — begrenzt auf 8 Teilnehmer <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item de">Heiva Moorea — Anmeldungen für Juni 2026 offen <span class="ticker-sep">&#9670;</span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item fr">TK Week — 20% de réduction sur toutes les prestations culturelles ce mois-ci <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item fr">Nouvelle session tressage traditionnel — Samedi 17 mai 2026 <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item fr">Atelier cuisine polynésienne — places limitées à 8 participants <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item fr">Heiva Moorea — Inscriptions ouvertes pour juin 2026 <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item en">TK Week — 20% off all cultural services this month <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item en">New traditional weaving session — Saturday 17 May 2026 <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item en">Polynesian cooking workshop — limited to 8 participants <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item en">Heiva Moorea — Registrations open for June 2026 <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item de">TK Woche — 20% Rabatt auf alle Kulturleistungen diesen Monat <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item de">Neuer traditioneller Flechtworkshop — Samstag, 17. Mai 2026 <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item de">Polynesischer Kochkurs — begrenzt auf 8 Teilnehmer <span class="ticker-sep">&#9670;</span></span>
+    <span class="ticker-item de">Heiva Moorea — Anmeldungen für Juni 2026 offen <span class="ticker-sep">&#9670;</span></span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo" aria-label="Tamaeva Tupuna Kultur — Accueil">
+      <div class="logo-ring">T</div>
+      <div class="logo-words">
+        <span class="logo-name">Tamaeva</span>
+        <span class="logo-tagline">Tupuna Kultur</span>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html" class="nav-link active">
+        <span class="fr">Accueil</span>
+        <span class="en">Home</span>
+        <span class="de">Startseite</span>
+      </a>
+      <a href="about.html" class="nav-link">
+        <span class="fr">À propos</span>
+        <span class="en">About</span>
+        <span class="de">Über uns</span>
+      </a>
+      <a href="services.html" class="nav-link">
+        <span class="fr">Prestations</span>
+        <span class="en">Services</span>
+        <span class="de">Leistungen</span>
+      </a>
+      <a href="actualites.html" class="nav-link">
+        <span class="fr">Actualités</span>
+        <span class="en">News</span>
+        <span class="de">Aktuelles</span>
+      </a>
+      <a href="contact.html" class="nav-link">
+        <span class="fr">Contact</span>
+        <span class="en">Contact</span>
+        <span class="de">Kontakt</span>
+      </a>
+      <a href="reservation.html" class="nav-cta">
+        <span class="fr">Réserver</span>
+        <span class="en">Book Now</span>
+        <span class="de">Buchen</span>
+      </a>
+    </nav>
+
+    <!-- Burger -->
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer overlay -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+
+<!-- Mobile drawer -->
+<nav class="mobile-drawer" id="mobile-drawer" aria-label="Navigation mobile">
+  <button class="drawer-close" onclick="closeDrawer()" aria-label="Fermer">
+    <ion-icon name="close-outline"></ion-icon>
+  </button>
+  <a href="index.html" class="nav-link active">
+    <span class="fr">Accueil</span><span class="en">Home</span><span class="de">Startseite</span>
+  </a>
+  <a href="about.html" class="nav-link" onclick="closeDrawer()">
+    <span class="fr">À propos</span><span class="en">About</span><span class="de">Über uns</span>
+  </a>
+  <a href="services.html" class="nav-link" onclick="closeDrawer()">
+    <span class="fr">Prestations</span><span class="en">Services</span><span class="de">Leistungen</span>
+  </a>
+  <a href="actualites.html" class="nav-link" onclick="closeDrawer()">
+    <span class="fr">Actualités</span><span class="en">News</span><span class="de">Aktuelles</span>
+  </a>
+  <a href="contact.html" class="nav-link" onclick="closeDrawer()">
+    <span class="fr">Contact</span><span class="en">Contact</span><span class="de">Kontakt</span>
+  </a>
+  <a href="reservation.html" class="nav-cta" onclick="closeDrawer()">
+    <span class="fr">Réserver</span><span class="en">Book Now</span><span class="de">Buchen</span>
+  </a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<main id="main-content">
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-texture" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-leaf hero-leaf-1" aria-hidden="true"></div>
+  <div class="hero-leaf hero-leaf-2" aria-hidden="true"></div>
+  <div class="hero-leaf hero-leaf-3" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+      <span class="fr">Promotion du jour — TK Week</span>
+      <span class="en">Today's offer — TK Week</span>
+      <span class="de">Tagesangebot — TK Woche</span>
+    </div>
+
+    <h1 class="hero-h1" id="hero-heading">
+      <span class="fr">Bienvenue dans<em>l'âme polynésienne</em></span>
+      <span class="en">Welcome to<em>the Polynesian soul</em></span>
+      <span class="de">Willkommen in der<em>polynesischen Seele</em></span>
+    </h1>
+
+    <div class="hero-ornament" aria-hidden="true">
+      <div class="ornament-diamond"></div>
+    </div>
+
+    <p class="hero-sub">
+      <span class="fr">Tamaeva — un espace culturel unique où tradition, art et hospitalité se rencontrent au coeur du Pacifique. Vivez la vraie Polynésie à Moorea.</span>
+      <span class="en">Tamaeva — a unique cultural space where tradition, art and hospitality meet at the heart of the Pacific. Experience the real Polynesia in Moorea.</span>
+      <span class="de">Tamaeva — ein einzigartiger Kulturraum, wo Tradition, Kunst und Gastfreundschaft im Herzen des Pazifiks aufeinandertreffen. Erleben Sie das echte Polynesien auf Moorea.</span>
+    </p>
+
+    <div class="hero-ctas">
+      <a href="services.html" class="btn-gold">
+        <span class="fr">Découvrir nos prestations</span>
+        <span class="en">Discover our services</span>
+        <span class="de">Leistungen entdecken</span>
+        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+      </a>
+      <a href="reservation.html" class="btn-ghost">
+        <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+        <span class="fr">Réserver maintenant</span>
+        <span class="en">Book now</span>
+        <span class="de">Jetzt buchen</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-track"></div>
+    <span class="fr">Défiler</span>
+    <span class="en">Scroll</span>
+    <span class="de">Scrollen</span>
+  </div>
+</section>
+
+<!-- ============ WELCOME STRIP ============ -->
+<section class="welcome-strip">
+  <div class="welcome-inner container">
+    <div class="welcome-body reveal">
+      <span class="sec-label fr">Notre histoire</span>
+      <span class="sec-label en">Our story</span>
+      <span class="sec-label de">Unsere Geschichte</span>
+      <h2 class="sec-title">
+        <span class="fr">L'art vivant de la<br>culture polynésienne</span>
+        <span class="en">The living art of<br>Polynesian culture</span>
+        <span class="de">Die lebendige Kunst der<br>polynesischen Kultur</span>
+      </h2>
+      <div class="gold-rule"><span></span><i></i></div>
+      <p>
+        <span class="fr">Brenda vous guide dans une immersion profonde et authentique au coeur des traditions ancestrales de Moorea. Chaque atelier, chaque moment partagé est une transmission vivante d'un patrimoine inestimable du Pacifique.</span>
+        <span class="en">Brenda guides you through a deep and authentic immersion into the heart of Moorea's ancestral traditions. Each workshop, each shared moment is a living transmission of an invaluable Pacific heritage.</span>
+        <span class="de">Brenda führt Sie in eine tiefe und authentische Eintauchen ins Herz der Ahnentraditionen von Moorea. Jeder Workshop, jeder gemeinsame Moment ist eine lebendige Weitergabe eines unschätzbaren pazifischen Erbes.</span>
+      </p>
+      <a href="about.html" class="welcome-link">
+        <span class="fr">Découvrir notre histoire</span>
+        <span class="en">Discover our story</span>
+        <span class="de">Unsere Geschichte entdecken</span>
+        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+    <div class="stats-grid reveal reveal-delay-1">
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <p class="stat-label fr">Années d'expérience</p>
+        <p class="stat-label en">Years of experience</p>
+        <p class="stat-label de">Jahre Erfahrung</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">500+</div>
+        <p class="stat-label fr">Visiteurs accueillis</p>
+        <p class="stat-label en">Visitors welcomed</p>
+        <p class="stat-label de">Begrüßte Besucher</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">15+</div>
+        <p class="stat-label fr">Ateliers différents</p>
+        <p class="stat-label en">Different workshops</p>
+        <p class="stat-label de">Verschiedene Workshops</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <p class="stat-label fr">Langues disponibles</p>
+        <p class="stat-label en">Available languages</p>
+        <p class="stat-label de">Verfügbare Sprachen</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES PREVIEW ============ -->
+<section class="services-preview">
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="sec-label fr">Nos prestations</span>
+      <span class="sec-label en">Our services</span>
+      <span class="sec-label de">Unsere Leistungen</span>
+      <h2 class="sec-title light">
+        <span class="fr">Nos services remarquables</span>
+        <span class="en">Our remarkable services</span>
+        <span class="de">Unsere bemerkenswerten Leistungen</span>
+      </h2>
+      <div class="gold-rule"><span></span><i></i></div>
+      <p>
+        <span class="fr">Chaque expérience est conçue pour vous connecter profondément à la culture polynésienne ancestrale de Moorea.</span>
+        <span class="en">Each experience is designed to deeply connect you to the ancestral Polynesian culture of Moorea.</span>
+        <span class="de">Jedes Erlebnis ist darauf ausgelegt, Sie tief mit der polynesischen Ahnenkultur von Moorea zu verbinden.</span>
+      </p>
+    </div>
+    <div class="services-grid reveal">
+      <!-- Card 1 -->
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <ion-icon class="svc-icon" name="flower-outline" aria-hidden="true"></ion-icon>
+        <h3 class="svc-title">
+          <span class="fr">Ateliers Traditionnels</span>
+          <span class="en">Traditional Workshops</span>
+          <span class="de">Traditionelle Workshops</span>
+        </h3>
+        <p class="svc-desc">
+          <span class="fr">Tressage de feuilles de cocotier, fabrication de parures florales, sculpture sur bois — apprenez les gestes ancestraux transmis de génération en génération.</span>
+          <span class="en">Coconut leaf weaving, floral crown making, wood carving — learn ancestral gestures passed down through generations.</span>
+          <span class="de">Kokosblattflechten, Blumenkranz-Herstellung, Holzschnitzerei — lernen Sie alte Handgriffe, die von Generation zu Generation weitergegeben werden.</span>
+        </p>
+        <a href="services.html" class="svc-link">
+          <span class="fr">En savoir plus</span>
+          <span class="en">Learn more</span>
+          <span class="de">Mehr erfahren</span>
+          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+        </a>
+      </div>
+      <!-- Card 2 -->
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <ion-icon class="svc-icon" name="earth-outline" aria-hidden="true"></ion-icon>
+        <h3 class="svc-title">
+          <span class="fr">Immersion Culturelle</span>
+          <span class="en">Cultural Immersion</span>
+          <span class="de">Kulturelle Eintauchen</span>
+        </h3>
+        <p class="svc-desc">
+          <span class="fr">Une journée entière immergée dans la vie polynésienne : musique, danse, langue reo, contes et mythes ancestraux de la Polynésie profonde.</span>
+          <span class="en">A full day immersed in Polynesian life: music, dance, reo language, ancestral tales and myths of deep Polynesia.</span>
+          <span class="de">Ein ganzer Tag eingetaucht in das polynesische Leben: Musik, Tanz, Reo-Sprache, Ahnengeschichten und Mythen des tiefen Polynesiens.</span>
+        </p>
+        <a href="services.html" class="svc-link">
+          <span class="fr">En savoir plus</span>
+          <span class="en">Learn more</span>
+          <span class="de">Mehr erfahren</span>
+          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+        </a>
+      </div>
+      <!-- Card 3 -->
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <ion-icon class="svc-icon" name="restaurant-outline" aria-hidden="true"></ion-icon>
+        <h3 class="svc-title">
+          <span class="fr">Découverte Gastronomique</span>
+          <span class="en">Gastronomic Discovery</span>
+          <span class="de">Gastronomische Entdeckung</span>
+        </h3>
+        <p class="svc-desc">
+          <span class="fr">Initiation à la cuisine polynésienne traditionnelle : poisson cru, poé, four tahitien — saveurs et techniques authentiques du Pacifique Sud.</span>
+          <span class="en">Introduction to traditional Polynesian cuisine: raw fish, poe, Tahitian oven — authentic flavours and techniques of the South Pacific.</span>
+          <span class="de">Einführung in die traditionelle polynesische Küche: roher Fisch, Poe, tahitianischer Ofen — authentische Aromen und Techniken des Südpazifiks.</span>
+        </p>
+        <a href="services.html" class="svc-link">
+          <span class="fr">En savoir plus</span>
+          <span class="en">Learn more</span>
+          <span class="de">Mehr erfahren</span>
+          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+        </a>
+      </div>
+    </div>
+    <div class="services-cta reveal">
+      <a href="services.html" class="btn-gold-outline">
+        <span class="fr">Voir toutes nos prestations</span>
+        <span class="en">See all our services</span>
+        <span class="de">Alle Leistungen ansehen</span>
+        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT TEASER ============ -->
+<section class="about-teaser">
+  <div class="about-inner">
+    <div class="about-img-wrap reveal">
+      <div class="about-img-box">
+        <ion-icon name="image-outline" aria-hidden="true"></ion-icon>
+        <span style="font-size:12px;letter-spacing:1px">Photo de Brenda</span>
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">Moorea</div>
+        <div class="about-badge-sub">
+          <span class="fr">Polynésie Fr.</span>
+          <span class="en">Fr. Polynesia</span>
+          <span class="de">Franz. Polynesien</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal reveal-delay-1">
+      <span class="sec-label fr">À propos</span>
+      <span class="sec-label en">About</span>
+      <span class="sec-label de">Über uns</span>
+      <h2 class="sec-title light">
+        <span class="fr">Tupuna Kultur —<br>la transmission ancestrale</span>
+        <span class="en">Tupuna Kultur —<br>ancestral transmission</span>
+        <span class="de">Tupuna Kultur —<br>die Weitergabe der Ahnen</span>
+      </h2>
+      <div class="gold-rule"><span></span><i></i></div>
+      <p>
+        <span class="fr">Brenda, guide culturelle née à Moorea, a fondé Tamaeva avec une conviction profonde : la culture polynésienne ancestrale (Tupuna) doit rester vivante, se transmettre et s'ouvrir au monde. TRAMUSEZ avec nous.</span>
+        <span class="en">Brenda, a cultural guide born in Moorea, founded Tamaeva with a deep conviction: ancestral Polynesian culture (Tupuna) must remain alive, be transmitted and open to the world. TRAMUSEZ with us.</span>
+        <span class="de">Brenda, eine Kulturführerin aus Moorea, gründete Tamaeva mit einer tiefen Überzeugung: Die polynesische Ahnenkultur (Tupuna) muss lebendig bleiben, weitergegeben werden und sich der Welt öffnen. TRAMUSEZ mit uns.</span>
+      </p>
+      <div class="values-list">
+        <div class="value-row">
+          <ion-icon name="checkmark-circle-outline" aria-hidden="true"></ion-icon>
+          <span class="fr">Authenticité — expériences vraies et non scénarisées</span>
+          <span class="en">Authenticity — real, unscripted experiences</span>
+          <span class="de">Authentizität — echte, ungeskriptete Erlebnisse</span>
+        </div>
+        <div class="value-row">
+          <ion-icon name="checkmark-circle-outline" aria-hidden="true"></ion-icon>
+          <span class="fr">Transmission — savoir ancestral partagé avec respect</span>
+          <span class="en">Transmission — ancestral knowledge shared with respect</span>
+          <span class="de">Weitergabe — Ahnenwissen mit Respekt geteilt</span>
+        </div>
+        <div class="value-row">
+          <ion-icon name="checkmark-circle-outline" aria-hidden="true"></ion-icon>
+          <span class="fr">Hospitalité — mana polynésien, chaleur du Pacifique</span>
+          <span class="en">Hospitality — Polynesian mana, Pacific warmth</span>
+          <span class="de">Gastfreundschaft — polynesisches Mana, pazifische Wärme</span>
+        </div>
+      </div>
+      <a href="about.html" class="about-link">
+        <span class="fr">En savoir plus sur Tamaeva</span>
+        <span class="en">Learn more about Tamaeva</span>
+        <span class="de">Mehr über Tamaeva erfahren</span>
+        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="testi-header reveal">
+      <span class="sec-label fr">Témoignages</span>
+      <span class="sec-label en">Testimonials</span>
+      <span class="sec-label de">Erfahrungsberichte</span>
+      <h2 class="sec-title">
+        <span class="fr">Ce que nos visiteurs disent</span>
+        <span class="en">What our visitors say</span>
+        <span class="de">Was unsere Besucher sagen</span>
+      </h2>
+      <div class="gold-rule"><span></span><i></i></div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote-mark">"</div>
+        <p class="testi-body">
+          <span class="fr">Une expérience inoubliable. Brenda nous a fait vivre la Polynésie de l'intérieur — ce n'est pas du tourisme, c'est une rencontre vraie avec une culture magnifique.</span>
+          <span class="en">An unforgettable experience. Brenda let us live Polynesia from the inside — this is not tourism, it is a true encounter with a magnificent culture.</span>
+          <span class="de">Ein unvergessliches Erlebnis. Brenda ließ uns Polynesien von innen erleben — das ist kein Tourismus, es ist eine echte Begegnung mit einer wunderbaren Kultur.</span>
+        </p>
+        <p class="testi-author">Sophie M.</p>
+        <p class="testi-origin fr">France — Atelier Tressage</p>
+        <p class="testi-origin en">France — Weaving Workshop</p>
+        <p class="testi-origin de">Frankreich — Flechtworkshop</p>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-quote-mark">"</div>
+        <p class="testi-body">
+          <span class="fr">La journée d'immersion a dépassé toutes nos attentes. Les enfants ont adoré, les adultes aussi. Des souvenirs et des gestes que nous n'oublierons jamais.</span>
+          <span class="en">The immersion day exceeded all our expectations. The children loved it, the adults too. Memories and gestures we will never forget.</span>
+          <span class="de">Der Immersionstag übertraf alle Erwartungen. Die Kinder liebten es, die Erwachsenen auch. Erinnerungen und Gesten, die wir nie vergessen werden.</span>
+        </p>
+        <p class="testi-author">Familie Müller</p>
+        <p class="testi-origin fr">Allemagne — Immersion Culturelle</p>
+        <p class="testi-origin en">Germany — Cultural Immersion</p>
+        <p class="testi-origin de">Deutschland — Kulturelle Eintauchen</p>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-quote-mark">"</div>
+        <p class="testi-body">
+          <span class="fr">Le repas traditionnel que nous avons préparé ensemble était divin. Brenda explique avec une passion rare — chaque recette porte une histoire profonde.</span>
+          <span class="en">The traditional meal we prepared together was divine. Brenda explains with rare passion — every recipe carries a deep story.</span>
+          <span class="de">Das traditionelle Gericht, das wir gemeinsam zubereiteten, war göttlich. Brenda erklärt mit seltener Leidenschaft — jedes Rezept trägt eine tiefe Geschichte.</span>
+        </p>
+        <p class="testi-author">John &amp; Laura T.</p>
+        <p class="testi-origin fr">USA — Découverte Gastronomique</p>
+        <p class="testi-origin en">USA — Gastronomic Discovery</p>
+        <p class="testi-origin de">USA — Gastronomische Entdeckung</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS PREVIEW ============ -->
+<section class="news-preview">
+  <div class="container">
+    <div class="news-header reveal">
+      <div>
+        <span class="sec-label fr">Actualités &amp; Bons plans</span>
+        <span class="sec-label en">News &amp; Deals</span>
+        <span class="sec-label de">Aktuelles &amp; Angebote</span>
+        <h2 class="sec-title light">
+          <span class="fr">Dernières nouvelles</span>
+          <span class="en">Latest news</span>
+          <span class="de">Neueste Nachrichten</span>
+        </h2>
+      </div>
+      <a href="actualites.html" class="news-header-link">
+        <span class="fr">Toutes les actualités</span>
+        <span class="en">All news</span>
+        <span class="de">Alle Nachrichten</span>
+        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+    <div class="news-grid">
+      <article class="news-card reveal">
+        <div class="news-thumb">
+          <ion-icon name="image-outline" aria-hidden="true"></ion-icon>
+          <span class="news-tag fr">Promotion</span>
+          <span class="news-tag en">Offer</span>
+          <span class="news-tag de">Angebot</span>
+        </div>
+        <div class="news-body">
+          <p class="news-date">Mai 2026</p>
+          <h3 class="news-title fr">TK Week — 20% sur toutes les prestations</h3>
+          <h3 class="news-title en">TK Week — 20% off all services</h3>
+          <h3 class="news-title de">TK Woche — 20% auf alle Leistungen</h3>
+          <p class="news-excerpt fr">Profitez de notre offre spéciale du mois de mai : 20% de réduction sur l'ensemble de nos prestations culturelles.</p>
+          <p class="news-excerpt en">Take advantage of our special May offer: 20% discount on all our cultural services throughout the month.</p>
+          <p class="news-excerpt de">Nutzen Sie unser besonderes Mai-Angebot: 20% Rabatt auf alle unsere Kulturleistungen den ganzen Monat.</p>
+        </div>
+      </article>
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-thumb">
+          <ion-icon name="image-outline" aria-hidden="true"></ion-icon>
+          <span class="news-tag fr">Nouveauté</span>
+          <span class="news-tag en">New</span>
+          <span class="news-tag de">Neu</span>
+        </div>
+        <div class="news-body">
+          <p class="news-date">Avril 2026</p>
+          <h3 class="news-title fr">Nouvelle session de tressage traditionnel</h3>
+          <h3 class="news-title en">New traditional weaving session</h3>
+          <h3 class="news-title de">Neue traditionelle Flechtworkshop-Sitzung</h3>
+          <p class="news-excerpt fr">Atelier de tressage de feuilles de cocotier — places limitées à 8 participants pour une expérience intime et personnalisée.</p>
+          <p class="news-excerpt en">Coconut leaf weaving workshop — limited to 8 participants for an intimate and personalised experience.</p>
+          <p class="news-excerpt de">Kokosblatt-Flechtworkshop — begrenzt auf 8 Teilnehmer für ein intimes und persönliches Erlebnis.</p>
+        </div>
+      </article>
+      <article class="news-card reveal reveal-delay-2">
+        <div class="news-thumb">
+          <ion-icon name="image-outline" aria-hidden="true"></ion-icon>
+          <span class="news-tag fr">Événement</span>
+          <span class="news-tag en">Event</span>
+          <span class="news-tag de">Veranstaltung</span>
+        </div>
+        <div class="news-body">
+          <p class="news-date">Juin 2026</p>
+          <h3 class="news-title fr">Heiva — Fête des traditions polynésiennes</h3>
+          <h3 class="news-title en">Heiva — Polynesian traditions festival</h3>
+          <h3 class="news-title de">Heiva — Festival der polynesischen Traditionen</h3>
+          <p class="news-excerpt fr">Célébrez le Heiva avec Tamaeva : danses, chants, sports traditionnels et gastronomie au coeur de Moorea.</p>
+          <p class="news-excerpt en">Celebrate Heiva with Tamaeva: dances, songs, traditional sports and gastronomy in the heart of Moorea.</p>
+          <p class="news-excerpt de">Feiern Sie das Heiva mit Tamaeva: Tänze, Gesang, traditionelle Sportarten und Gastronomie im Herzen von Moorea.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING CTA BAND ============ -->
+<section class="booking-band" aria-labelledby="cta-heading">
+  <div class="booking-band-inner reveal">
+    <h2 class="booking-band-title" id="cta-heading">
+      <span class="fr">Prêt à vivre l'expérience ?</span>
+      <span class="en">Ready to live the experience?</span>
+      <span class="de">Bereit, das Erlebnis zu erleben?</span>
+    </h2>
+    <p class="booking-band-sub">
+      <span class="fr">Réservez votre immersion polynésienne en quelques clics. Aucun paiement requis à cette étape — confirmation par email sous 24h.</span>
+      <span class="en">Book your Polynesian immersion in a few clicks. No payment required at this stage — email confirmation within 24 hours.</span>
+      <span class="de">Buchen Sie Ihre polynesische Eintauchen in wenigen Klicks. Keine Zahlung in dieser Phase erforderlich — E-Mail-Bestätigung innerhalb von 24 Stunden.</span>
+    </p>
+    <a href="reservation.html" class="btn-dark">
+      <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+      <span class="fr">Faire une réservation</span>
+      <span class="en">Make a reservation</span>
+      <span class="de">Eine Reservierung vornehmen</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom:18px;display:flex;align-items:center;gap:13px;">
+        <div class="logo-ring">T</div>
+        <div class="logo-words">
+          <span class="logo-name">Tamaeva</span>
+          <span class="logo-tagline">Tupuna Kultur</span>
+        </div>
+      </a>
+      <p class="footer-brand-desc fr">Tamaeva est là pour vous faire apprécier la culture polynésienne sous toutes ses formes — musique, traditions, cuisine et bien plus à Moorea.</p>
+      <p class="footer-brand-desc en">Tamaeva is here to help you appreciate Polynesian culture in all its forms — music, traditions, cuisine and much more in Moorea.</p>
+      <p class="footer-brand-desc de">Tamaeva ist hier, um Ihnen zu helfen, die polynesische Kultur in all ihren Formen zu schätzen — Musik, Traditionen, Küche und vieles mehr auf Moorea.</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="fr">Navigation</h4>
+      <h4 class="en">Navigation</h4>
+      <h4 class="de">Navigation</h4>
+      <ul>
+        <li><a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span><span class="de">Startseite</span></a></li>
+        <li><a href="about.html"><span class="fr">À propos</span><span class="en">About</span><span class="de">Über uns</span></a></li>
+        <li><a href="services.html"><span class="fr">Prestations</span><span class="en">Services</span><span class="de">Leistungen</span></a></li>
+        <li><a href="actualites.html"><span class="fr">Actualités</span><span class="en">News</span><span class="de">Aktuelles</span></a></li>
+        <li><a href="contact.html"><span class="fr">Contact</span><span class="en">Contact</span><span class="de">Kontakt</span></a></li>
+        <li><a href="reservation.html"><span class="fr">Réservation</span><span class="en">Booking</span><span class="de">Buchung</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="fr">Horaires</h4>
+      <h4 class="en">Hours</h4>
+      <h4 class="de">Öffnungszeiten</h4>
+      <p class="fr">Lun — Ven<br>9h00 — 18h00</p>
+      <p class="en">Mon — Fri<br>9:00 AM — 6:00 PM</p>
+      <p class="de">Mo — Fr<br>9:00 — 18:00 Uhr</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="fr">Contact</h4>
+      <h4 class="en">Contact</h4>
+      <h4 class="de">Kontakt</h4>
+      <div class="footer-contact-row">
+        <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+        <span>+689 89 420 610</span>
+      </div>
+      <div class="footer-contact-row">
+        <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+        <span>tupunakultur@gmail.com</span>
+      </div>
+      <div class="footer-contact-row" style="align-items:flex-start">
+        <ion-icon name="location-outline" aria-hidden="true" style="margin-top:2px"></ion-icon>
+        <span>pk 23 Papetoai c/mer<br>Moorea 98728</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="fr">&copy; 2026 Tamaeva &bull; Tupuna Kultur &bull; Tous droits réservés &bull; Réalisation : <a href="http://www.creasite.net" target="_blank" rel="noopener">Creasite</a></p>
+    <p class="en">&copy; 2026 Tamaeva &bull; Tupuna Kultur &bull; All rights reserved &bull; Design: <a href="http://www.creasite.net" target="_blank" rel="noopener">Creasite</a></p>
+    <p class="de">&copy; 2026 Tamaeva &bull; Tupuna Kultur &bull; Alle Rechte vorbehalten &bull; Realisierung: <a href="http://www.creasite.net" target="_blank" rel="noopener">Creasite</a></p>
+    <a href="politique-confidentialite.html">
+      <span class="fr">Politique de confidentialité</span>
+      <span class="en">Privacy Policy</span>
+      <span class="de">Datenschutz</span>
+    </a>
+  </div>
+</footer>
+
+<!-- ============ JAVASCRIPT ============ -->
+<script>
+/* --------------------------------------------------
+   LANGUAGE SYSTEM
+   Reads ?lang= from URL, falls back to localStorage,
+   then defaults to 'fr'. Saves choice across pages.
+-------------------------------------------------- */
+var SUPPORTED = ['fr','en','de'];
+var currentLang = 'fr';
+
+function getLangFromURL() {
+  var params = new URLSearchParams(window.location.search);
+  var l = params.get('lang');
+  return SUPPORTED.indexOf(l) !== -1 ? l : null;
+}
+
+function setLang(lang) {
+  if (SUPPORTED.indexOf(lang) === -1) lang = 'fr';
+  currentLang = lang;
+
+  /* 1. Set data-lang on <html> — CSS rules do the show/hide */
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+
+  /* 2. Update lang buttons */
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+  });
+
+  /* 3. Persist in localStorage */
+  try { localStorage.setItem('tamaeva_lang', lang); } catch(e) {}
+
+  /* 4. Update URL without reload (preserves hash) */
+  var url = new URL(window.location.href);
+  url.searchParams.set('lang', lang);
+  history.replaceState(null, '', url.toString());
+
+  /* 5. Update all internal links to carry ?lang= */
+  document.querySelectorAll('a[href]').forEach(function(a) {
+    var href = a.getAttribute('href');
+    /* Only relative links to .html pages */
+    if (href && href.indexOf('.html') !== -1 && href.indexOf('//') === -1) {
+      try {
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('lang', lang);
+        a.href = u.pathname + u.search + u.hash;
+      } catch(e) {}
+    }
+  });
+}
+
+/* Init on page load */
+(function() {
+  var lang = getLangFromURL();
+  if (!lang) {
+    try { lang = localStorage.getItem('tamaeva_lang'); } catch(e) {}
+  }
+  if (!lang || SUPPORTED.indexOf(lang) === -1) lang = 'fr';
+  setLang(lang);
+})();
+
+/* --------------------------------------------------
+   STICKY HEADER
+-------------------------------------------------- */
+var header = document.getElementById('site-header');
+window.addEventListener('scroll', function() {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* --------------------------------------------------
+   MOBILE DRAWER
+-------------------------------------------------- */
+var burger = document.getElementById('burger');
+var drawer = document.getElementById('mobile-drawer');
+var overlay = document.getElementById('drawer-overlay');
+
+function openDrawer() {
+  drawer.classList.add('open');
+  overlay.classList.add('open');
+  burger.classList.add('open');
+  burger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+burger.addEventListener('click', function() {
+  drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDrawer();
+});
+
+/* --------------------------------------------------
+   REVEAL ON SCROLL
+-------------------------------------------------- */
+var revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  revealEls.forEach(function(el) { revealObs.observe(el); });
+} else {
+  revealEls.forEach(function(el) { el.classList.add('visible'); });
+}
+</script>
+
+</body>
+</html>
