@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Réservation — Tamaeva Tupuna Kultur | Moorea, Polynésie Française</title>
+<meta name="description" content="Réservez votre expérience culturelle polynésienne à Moorea. Ateliers traditionnels, immersion culturelle, gastronomie — confirmé sous 24h, sans paiement en ligne.">
+<meta name="keywords" content="réservation culture polynésienne Moorea, réserver atelier Tahiti, booking Tamaeva Tupuna Kultur">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tamaeva.fr/reservation.html">
+<meta property="og:title" content="Réservation — Tamaeva Tupuna Kultur">
+<meta property="og:description" content="Réservez votre immersion polynésienne à Moorea. Confirmation par email sous 24h.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+
+<style>
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Jost', sans-serif; background: #fdf6e8; color: #1a1a18; overflow-x: hidden; }
+a { text-decoration: none; }
+
+/* =============================================
+   TOKENS
+   ============================================= */
+:root {
+  --forest:      #1a3325;
+  --forest-deep: #0f1f17;
+  --forest-mid:  #2d5040;
+  --forest-light:#3d6b54;
+  --gold:        #c8973a;
+  --gold-light:  #e8c068;
+  --gold-pale:   #f5e4b8;
+  --cream:       #fdf6e8;
+  --cream-mid:   #f5e8cf;
+  --cream-dark:  #ecddbf;
+  --rust:        #ab4a1a;
+  --white:       #ffffff;
+  --text-dark:   #1a1a18;
+  --text-mid:    #3d3d35;
+  --text-muted:  #7a7a6e;
+  /* ↓ MODIFIÉ : 36px lang-bar + 36px ticker + 80px nav = 152px */
+  --header-h:    152px;
+  --nav-h:       80px;
+  --success:     #2d6a4f;
+  --success-bg:  #d8f3dc;
+  --error:       #9b2226;
+  --error-bg:    #fde8e8;
+}
+
+/* =============================================
+   MULTILANG
+   ============================================= */
+html[data-lang="fr"] .en, html[data-lang="fr"] .de { display: none !important; }
+html[data-lang="en"] .fr, html[data-lang="en"] .de { display: none !important; }
+html[data-lang="de"] .fr, html[data-lang="de"] .en { display: none !important; }
+
+/* =============================================
+   FIXED TOP WRAPPER
+   — contient lang-bar + ticker + site-header
+   — remplace le position:fixed du site-header
+   ============================================= */
+.fixed-top-wrapper {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 150;
+}
+
+/* =============================================
+   LANG BAR
+   ============================================= */
+.lang-bar {
+  background: var(--forest-deep);
+  padding: 7px 48px;
+  display: flex; justify-content: flex-end; align-items: center; gap: 2px;
+  position: relative; z-index: 200;
+}
+.lang-btn {
+  background: none; border: 1px solid transparent;
+  color: rgba(255,255,255,.45);
+  font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; padding: 5px 11px; border-radius: 2px; transition: all .2s;
+}
+.lang-btn:hover { color: var(--gold-light); border-color: rgba(200,151,58,.4); }
+.lang-btn.active { color: var(--gold-light); border-color: var(--gold); background: rgba(200,151,58,.08); }
+
+/* =============================================
+   TICKER
+   ============================================= */
+.ticker-wrap {
+  background: var(--gold); overflow: hidden; height: 36px;
+  position: relative; display: flex; align-items: center;
+}
+.ticker-label {
+  background: var(--rust); color: var(--white);
+  font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 0 18px; height: 100%; display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0; position: relative; z-index: 2; white-space: nowrap;
+}
+.ticker-label ion-icon { font-size: 12px; }
+.ticker-track { display: flex; animation: ticker-scroll 32s linear infinite; }
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  white-space: nowrap; font-size: 13px; font-weight: 500;
+  color: var(--forest-deep); padding: 0 56px; letter-spacing: .3px;
+  display: flex; align-items: center; gap: 8px;
+}
+.ticker-sep { color: var(--rust); font-size: 10px; }
+@keyframes ticker-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* =============================================
+   HEADER
+   — position:fixed retiré (géré par .fixed-top-wrapper)
+   ============================================= */
+.site-header {
+  transition: background .4s, box-shadow .4s;
+}
+.site-header.scrolled {
+  background: rgba(10,20,14,.96);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(200,151,58,.15);
+}
+.header-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+  height: var(--nav-h); display: flex; align-items: center;
+  justify-content: space-between; gap: 32px;
+}
+.logo { display: flex; align-items: center; gap: 13px; flex-shrink: 0; }
+.logo-ring {
+  width: 46px; height: 46px; border-radius: 50%; background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600;
+  color: var(--forest-deep); line-height: 1; flex-shrink: 0;
+}
+.logo-words { display: flex; flex-direction: column; line-height: 1; }
+.logo-name { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--white); letter-spacing: .5px; }
+.logo-tagline { font-size: 9.5px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); margin-top: 3px; }
+.main-nav { display: flex; align-items: center; gap: 28px; }
+.nav-link {
+  color: rgba(255,255,255,.8); font-size: 12px; font-weight: 500;
+  letter-spacing: 1.8px; text-transform: uppercase;
+  transition: color .2s; position: relative; padding-bottom: 2px; white-space: nowrap;
+}
+.nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--gold); transition:width .3s; }
+.nav-link:hover { color: var(--gold-light); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link.active { color: var(--gold-light); }
+.nav-cta {
+  background: var(--gold); color: var(--forest-deep);
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  padding: 11px 24px; border-radius: 2px; transition: background .2s, transform .15s; white-space: nowrap;
+}
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+.nav-cta.current { background: var(--forest-mid); color: var(--gold-light); pointer-events: none; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all .3s; transform-origin: center; }
+.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-drawer {
+  position: fixed; top: 0; right: 0; width: min(320px,85vw); height: 100dvh;
+  background: var(--forest-deep); z-index: 300; transform: translateX(110%);
+  transition: transform .38s cubic-bezier(.4,0,.2,1);
+  padding: 100px 40px 40px; display: flex; flex-direction: column; gap: 8px;
+  border-left: 1px solid rgba(200,151,58,.15); overflow-y: auto;
+}
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer .nav-link { font-size: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.06); display: block; }
+.mobile-drawer .nav-cta { margin-top: 20px; display: inline-block; padding: 14px 32px; }
+.drawer-close { position: absolute; top: 22px; right: 24px; background: none; border: none; color: rgba(255,255,255,.6); font-size: 24px; cursor: pointer; transition: color .2s; }
+.drawer-close:hover { color: var(--white); }
+.drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 250; opacity: 0; pointer-events: none; transition: opacity .38s; }
+.drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+/* =============================================
+   PAGE HERO — editorial banner
+   — padding-top utilise --header-h (152px) au lieu de l'ancien calcul
+   ============================================= */
+.page-hero {
+  background: var(--forest-deep);
+  min-height: 340px;
+  display: flex; align-items: flex-end;
+  padding: calc(var(--header-h) + 36px) 48px 64px;
+  position: relative; overflow: hidden;
+}
+.page-hero-texture {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(60deg, transparent, transparent 120px, rgba(200,151,58,.025) 120px, rgba(200,151,58,.025) 121px),
+    repeating-linear-gradient(-60deg, transparent, transparent 120px, rgba(200,151,58,.025) 120px, rgba(200,151,58,.025) 121px);
+}
+.page-hero-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 15% 60%, rgba(45,80,64,.55) 0%, transparent 70%);
+}
+.page-hero-leaf {
+  position: absolute; border-radius: 50% 8% 50% 8%;
+  background: rgba(200,151,58,.04); pointer-events: none;
+}
+.page-hero-leaf-1 { width: 200px; height: 320px; top: -40px; right: 8%; transform: rotate(25deg); }
+.page-hero-leaf-2 { width: 100px; height: 160px; bottom: -20px; right: 22%; transform: rotate(-15deg); opacity: .5; }
+.page-hero-inner { position: relative; z-index: 1; max-width: 1200px; width: 100%; margin: 0 auto; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.4); margin-bottom: 20px;
+}
+.breadcrumb a { color: rgba(255,255,255,.4); transition: color .2s; }
+.breadcrumb a:hover { color: var(--gold-light); }
+.breadcrumb ion-icon { font-size: 12px; }
+.page-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 6vw, 72px); font-weight: 600;
+  color: var(--white); line-height: 1.06; letter-spacing: -.3px;
+}
+.page-hero-title em { font-style: italic; color: var(--gold-light); }
+.page-hero-sub {
+  font-size: 15.5px; font-weight: 300; color: rgba(255,255,255,.6);
+  margin-top: 16px; max-width: 560px; line-height: 1.75;
+}
+.gold-rule { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+.gold-rule span { width: 48px; height: 1px; background: var(--gold); opacity: .6; }
+.gold-rule i { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; display: block; border-radius: 1px; }
+
+/* =============================================
+   REVEAL
+   ============================================= */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+
+/* =============================================
+   MAIN LAYOUT
+   ============================================= */
+.booking-layout {
+  max-width: 1200px; margin: 0 auto;
+  padding: 80px 48px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1.45fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* =============================================
+   LEFT PANEL — info & steps
+   ============================================= */
+.info-panel { position: sticky; top: calc(var(--header-h) + 28px); }
+
+.sec-label {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; display: block;
+}
+.info-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px,3vw,38px); font-weight: 600;
+  color: var(--text-dark); line-height: 1.15; margin-bottom: 16px;
+}
+.info-intro {
+  font-size: 15px; font-weight: 300; color: var(--text-mid);
+  line-height: 1.8; margin-bottom: 36px;
+}
+
+/* How it works */
+.steps-title {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 20px;
+}
+.steps-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; }
+.step-row {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 0; border-bottom: 1px solid var(--cream-dark);
+  position: relative;
+}
+.step-row:last-child { border-bottom: none; }
+.step-num-wrap { flex-shrink: 0; position: relative; }
+.step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gold); color: var(--forest-deep);
+  font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; line-height: 1;
+}
+.step-connector {
+  position: absolute; top: 36px; left: 50%; transform: translateX(-50%);
+  width: 1px; height: calc(100% + 20px);
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  opacity: .35;
+}
+.step-row:last-child .step-connector { display: none; }
+.step-body { padding-top: 6px; }
+.step-label {
+  font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px;
+}
+.step-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+
+/* Contact info box */
+.contact-box {
+  background: var(--forest);
+  border-radius: 3px;
+  padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.contact-box-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 4px;
+}
+.contact-row {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,.65);
+}
+.contact-row ion-icon { font-size: 16px; color: var(--gold); flex-shrink: 0; }
+.contact-row a { color: rgba(255,255,255,.65); transition: color .2s; }
+.contact-row a:hover { color: var(--gold-light); }
+
+/* =============================================
+   RIGHT PANEL — FORM
+   ============================================= */
+.form-card {
+  background: var(--white);
+  border-radius: 4px;
+  padding: 52px 48px;
+  box-shadow: 0 8px 60px rgba(0,0,0,.07), 0 1px 0 rgba(200,151,58,.15);
+  position: relative; overflow: hidden;
+}
+/* Decorative corner accent */
+.form-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(to bottom, var(--gold), var(--rust));
+}
+.form-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 600; color: var(--text-dark);
+  margin-bottom: 6px; line-height: 1.1;
+}
+.form-card-sub {
+  font-size: 14px; font-weight: 300; color: var(--text-muted);
+  margin-bottom: 36px; line-height: 1.6;
+}
+/* Required note */
+.required-note {
+  font-size: 11.5px; color: var(--text-muted); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 6px;
+}
+.required-note ion-icon { font-size: 13px; color: var(--rust); }
+
+/* Form structure */
+.form-section { margin-bottom: 32px; }
+.form-section-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+}
+.form-section-label ion-icon { font-size: 14px; }
+.form-section-divider { height: 1px; background: var(--cream-dark); margin-bottom: 22px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 18px; }
+.form-group:last-child { margin-bottom: 0; }
+
+label {
+  display: block; font-size: 11.5px; font-weight: 600;
+  letter-spacing: .8px; text-transform: uppercase;
+  color: var(--text-mid); margin-bottom: 8px;
+}
+label .req { color: var(--rust); margin-left: 2px; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select, textarea {
+  width: 100%;
+  background: var(--cream);
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 2px;
+  padding: 12px 16px;
+  font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 400;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color .25s, box-shadow .25s, background .2s;
+  -webkit-appearance: none; appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(200,151,58,.12);
+}
+input.error, select.error, textarea.error {
+  border-color: var(--rust);
+  box-shadow: 0 0 0 3px rgba(171,74,26,.1);
+}
+.field-error {
+  font-size: 11.5px; color: var(--rust); margin-top: 5px;
+  display: none; align-items: center; gap: 4px;
+}
+.field-error.visible { display: flex; }
+.field-error ion-icon { font-size: 13px; flex-shrink: 0; }
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23c8973a' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+
+/* Service cards selector */
+.service-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px;
+}
+.service-card-opt {
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 3px; padding: 16px 14px; cursor: pointer;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+  position: relative; overflow: hidden;
+}
+.service-card-opt input[type="radio"] {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.service-card-opt:hover { border-color: rgba(200,151,58,.5); background: rgba(200,151,58,.04); }
+.service-card-opt.selected {
+  border-color: var(--gold);
+  background: rgba(200,151,58,.07);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+.sc-icon { font-size: 22px; color: var(--gold); margin-bottom: 8px; display: block; }
+.sc-name {
+  font-size: 11px; font-weight: 600; letter-spacing: .5px;
+  color: var(--text-dark); line-height: 1.3;
+}
+.sc-check {
+  position: absolute; top: 8px; right: 8px;
+  font-size: 15px; color: var(--gold);
+  opacity: 0; transition: opacity .2s;
+}
+.service-card-opt.selected .sc-check { opacity: 1; }
+
+/* Persons stepper */
+.persons-stepper {
+  display: flex; align-items: center; gap: 0;
+  border: 1.5px solid var(--cream-dark); border-radius: 2px; overflow: hidden;
+  width: fit-content;
+}
+.stepper-btn {
+  background: var(--cream); border: none; cursor: pointer;
+  width: 42px; height: 42px; font-size: 20px; font-weight: 300;
+  color: var(--forest); display: flex; align-items: center; justify-content: center;
+  transition: background .2s; flex-shrink: 0;
+}
+.stepper-btn:hover { background: var(--cream-dark); }
+.stepper-btn ion-icon { font-size: 18px; pointer-events: none; }
+.stepper-val {
+  padding: 0 22px; font-size: 16px; font-weight: 500;
+  color: var(--text-dark); min-width: 60px; text-align: center;
+  border-left: 1.5px solid var(--cream-dark); border-right: 1.5px solid var(--cream-dark);
+  height: 42px; display: flex; align-items: center; justify-content: center;
+}
+/* Hidden real input */
+#persons-input { display: none; }
+
+/* Date + time row */
+.datetime-note {
+  font-size: 12px; color: var(--text-muted); margin-top: 8px;
+  display: flex; align-items: center; gap: 5px;
+}
+.datetime-note ion-icon { font-size: 13px; color: var(--gold); }
+
+/* Consent checkbox */
+.consent-row {
+  display: flex; align-items: flex-start; gap: 12px; margin-top: 4px;
+}
+.consent-row input[type="checkbox"] {
+  width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px;
+  accent-color: var(--gold); cursor: pointer; border-radius: 2px;
+}
+.consent-label {
+  font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.6;
+  cursor: pointer;
+}
+.consent-label a { color: var(--forest); text-decoration: underline; }
+
+/* Submit */
+.btn-submit {
+  width: 100%;
+  background: var(--forest);
+  color: var(--gold-light);
+  border: none; cursor: pointer;
+  font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 18px 24px; border-radius: 2px;
+  transition: background .2s, transform .15s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-top: 28px;
+}
+.btn-submit:hover { background: var(--forest-mid); transform: translateY(-1px); }
+.btn-submit:active { transform: none; }
+.btn-submit ion-icon { font-size: 18px; }
+.btn-submit.loading { pointer-events: none; opacity: .75; }
+.btn-submit .spinner {
+  width: 18px; height: 18px; border: 2px solid rgba(255,255,255,.3);
+  border-top-color: var(--gold-light); border-radius: 50%;
+  animation: spin .7s linear infinite; flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Submit note */
+.submit-note {
+  font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 14px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.submit-note ion-icon { font-size: 14px; color: var(--gold); }
+
+/* Success / error messages */
+.form-feedback {
+  display: none; border-radius: 3px; padding: 18px 22px;
+  margin-top: 22px; font-size: 14px; font-weight: 400;
+  align-items: flex-start; gap: 12px; line-height: 1.6;
+}
+.form-feedback.visible { display: flex; }
+.form-feedback.success { background: var(--success-bg); color: var(--success); border: 1px solid rgba(45,106,79,.2); }
+.form-feedback.error-msg { background: var(--error-bg); color: var(--error); border: 1px solid rgba(155,34,38,.2); }
+.form-feedback ion-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+.feedback-title { font-weight: 600; margin-bottom: 4px; }
+
+/* =============================================
+   PRACTICAL INFO STRIP
+   ============================================= */
+.practical-strip {
+  background: var(--cream-mid);
+  padding: 72px 48px;
+  border-top: 1px solid var(--cream-dark);
+}
+.practical-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 40px;
+}
+.prac-card {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 28px; background: var(--white);
+  border-radius: 3px; border-bottom: 2px solid var(--gold);
+  transition: box-shadow .3s;
+}
+.prac-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,.07); }
+.prac-icon { font-size: 28px; color: var(--gold); display: block; }
+.prac-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600; color: var(--text-dark); line-height: 1.2;
+}
+.prac-body { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+
+/* =============================================
+   FAQ STRIP
+   ============================================= */
+.faq-strip {
+  background: var(--forest-deep);
+  padding: 80px 48px;
+}
+.faq-inner { max-width: 800px; margin: 0 auto; }
+.faq-header { text-align: center; margin-bottom: 52px; }
+.faq-header .sec-label { justify-content: center; display: flex; }
+.faq-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px,4vw,46px); font-weight: 600; color: var(--white); margin-top: 12px;
+}
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.faq-item:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 22px 0; text-align: left;
+}
+.faq-q-text {
+  font-size: 16px; font-weight: 500; color: rgba(255,255,255,.85); line-height: 1.4;
+}
+.faq-icon { font-size: 20px; color: var(--gold); flex-shrink: 0; transition: transform .3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
+  font-size: 14.5px; font-weight: 300; color: rgba(255,255,255,.55); line-height: 1.75;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 22px; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: var(--forest-deep);
+  border-top: 1px solid rgba(200,151,58,.15);
+  padding: 80px 48px 36px;
+}
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px; margin-bottom: 60px;
+}
+.footer-brand-desc { font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,.45); line-height: 1.75; margin-top: 18px; max-width: 290px; }
+.footer-col h4 { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.footer-col ul li a { font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,.5); transition: color .2s; }
+.footer-col ul li a:hover { color: var(--gold-light); }
+.footer-col p { font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.8; }
+.footer-contact-row { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,.5); margin-bottom: 10px; }
+.footer-contact-row ion-icon { font-size: 15px; color: var(--gold); flex-shrink: 0; }
+.footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; font-weight: 300; color: rgba(255,255,255,.28); letter-spacing: .3px; }
+.footer-bottom a { color: rgba(200,151,58,.65); transition: color .2s; }
+.footer-bottom a:hover { color: var(--gold-light); }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .booking-layout { grid-template-columns: 1fr; gap: 48px; }
+  .info-panel { position: static; }
+  .practical-inner { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  :root { --header-h: 116px; } /* 36px lang-bar + 36px ticker + 44px nav mobile */
+  .lang-bar { padding: 7px 24px; }
+  .header-inner { padding: 0 24px; }
+  .main-nav { display: none; }
+  .burger { display: flex; }
+  .page-hero { padding: calc(var(--header-h) + 24px) 24px 48px; }
+  .booking-layout { padding: 56px 24px 72px; }
+  .form-card { padding: 36px 24px; }
+  .service-cards { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .practical-strip { padding: 56px 24px; }
+  .faq-strip { padding: 64px 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  footer { padding: 60px 24px 28px; }
+}
+@media (max-width: 540px) {
+  .service-cards { grid-template-columns: 1fr; }
+  .practical-inner { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== FIXED TOP WRAPPER — lang-bar + ticker + header restent visibles au scroll ===== -->
+<div class="fixed-top-wrapper" id="fixed-top-wrapper">
+
+  <!-- ===== LANG BAR ===== -->
+  <div class="lang-bar" role="navigation" aria-label="Sélection de langue">
+    <button class="lang-btn active" onclick="setLang('fr')" aria-label="Français">FR</button>
+    <button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button>
+    <button class="lang-btn" onclick="setLang('de')" aria-label="Deutsch">DE</button>
+  </div>
+
+  <!-- ===== TICKER ===== -->
+  <div class="ticker-wrap" role="marquee" aria-label="Actualités">
+    <div class="ticker-label">
+      <ion-icon name="radio-outline" aria-hidden="true"></ion-icon>
+      <span class="fr">Actus</span><span class="en">News</span><span class="de">News</span>
+    </div>
+    <div class="ticker-track">
+      <span class="ticker-item fr">TK Week — 20% sur toutes les prestations ce mois-ci <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Aucun paiement requis lors de la réservation <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Confirmation par email sous 24h <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">TK Week — 20% off all services this month <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">No payment required when booking <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">Email confirmation within 24 hours <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">TK Woche — 20% Rabatt auf alle Leistungen <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">Keine Zahlung bei der Buchung erforderlich <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">E-Mail-Bestätigung innerhalb von 24 Stunden <span class="ticker-sep">&#9670;</span></span>
+      <!-- duplicate -->
+      <span class="ticker-item fr">TK Week — 20% sur toutes les prestations ce mois-ci <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Aucun paiement requis lors de la réservation <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item fr">Confirmation par email sous 24h <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">TK Week — 20% off all services this month <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">No payment required when booking <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item en">Email confirmation within 24 hours <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">TK Woche — 20% Rabatt auf alle Leistungen <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">Keine Zahlung bei der Buchung erforderlich <span class="ticker-sep">&#9670;</span></span>
+      <span class="ticker-item de">E-Mail-Bestätigung innerhalb von 24 Stunden <span class="ticker-sep">&#9670;</span></span>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Tamaeva — Accueil">
+        <div class="logo-ring">T</div>
+        <div class="logo-words">
+          <span class="logo-name">Tamaeva</span>
+          <span class="logo-tagline">Tupuna Kultur</span>
+        </div>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="index.html" class="nav-link"><span class="fr">Accueil</span><span class="en">Home</span><span class="de">Startseite</span></a>
+        <a href="about.html" class="nav-link"><span class="fr">À propos</span><span class="en">About</span><span class="de">Über uns</span></a>
+        <a href="services.html" class="nav-link"><span class="fr">Prestations</span><span class="en">Services</span><span class="de">Leistungen</span></a>
+        <a href="actualites.html" class="nav-link"><span class="fr">Actualités</span><span class="en">News</span><span class="de">Aktuelles</span></a>
+        <a href="contact.html" class="nav-link"><span class="fr">Contact</span><span class="en">Contact</span><span class="de">Kontakt</span></a>
+        <a href="reservation.html" class="nav-cta current" aria-current="page">
+          <span class="fr">Réserver</span><span class="en">Book Now</span><span class="de">Buchen</span>
+        </a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+</div><!-- /fixed-top-wrapper -->
+
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+<nav class="mobile-drawer" id="mobile-drawer" aria-label="Navigation mobile">
+  <button class="drawer-close" onclick="closeDrawer()" aria-label="Fermer"><ion-icon name="close-outline"></ion-icon></button>
+  <a href="index.html" class="nav-link"><span class="fr">Accueil</span><span class="en">Home</span><span class="de">Startseite</span></a>
+  <a href="about.html" class="nav-link" onclick="closeDrawer()"><span class="fr">À propos</span><span class="en">About</span><span class="de">Über uns</span></a>
+  <a href="services.html" class="nav-link" onclick="closeDrawer()"><span class="fr">Prestations</span><span class="en">Services</span><span class="de">Leistungen</span></a>
+  <a href="actualites.html" class="nav-link" onclick="closeDrawer()"><span class="fr">Actualités</span><span class="en">News</span><span class="de">Aktuelles</span></a>
+  <a href="contact.html" class="nav-link" onclick="closeDrawer()"><span class="fr">Contact</span><span class="en">Contact</span><span class="de">Kontakt</span></a>
+  <a href="reservation.html" class="nav-cta current" onclick="closeDrawer()"><span class="fr">Réserver</span><span class="en">Book Now</span><span class="de">Buchen</span></a>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+  <div class="page-hero-texture" aria-hidden="true"></div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+  <div class="page-hero-leaf page-hero-leaf-1" aria-hidden="true"></div>
+  <div class="page-hero-leaf page-hero-leaf-2" aria-hidden="true"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span><span class="de">Startseite</span></a>
+      <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+      <span class="fr">Réservation</span><span class="en">Booking</span><span class="de">Buchung</span>
+    </div>
+    <h1 class="page-hero-title">
+      <span class="fr">Réservez votre<em> expérience polynésienne</em></span>
+      <span class="en">Book your<em> Polynesian experience</em></span>
+      <span class="de">Buchen Sie Ihr<em> polynesisches Erlebnis</em></span>
+    </h1>
+    <p class="page-hero-sub">
+      <span class="fr">Remplissez le formulaire ci-dessous. Nous vous confirmons la disponibilité par email sous 24h — aucun paiement requis à cette étape.</span>
+      <span class="en">Fill in the form below. We confirm availability by email within 24 hours — no payment required at this stage.</span>
+      <span class="de">Füllen Sie das Formular unten aus. Wir bestätigen die Verfügbarkeit per E-Mail innerhalb von 24 Stunden — keine Zahlung in dieser Phase erforderlich.</span>
+    </p>
+    <div class="gold-rule"><span></span><i></i></div>
+  </div>
+</div>
+
+<!-- ===== MAIN BOOKING LAYOUT ===== -->
+<main id="main-content">
+<div class="booking-layout">
+
+  <!-- LEFT — Info panel -->
+  <aside class="info-panel reveal" aria-label="Informations pratiques">
+
+    <span class="sec-label fr">Comment ça marche</span>
+    <span class="sec-label en">How it works</span>
+    <span class="sec-label de">So funktioniert es</span>
+
+    <h2 class="info-title">
+      <span class="fr">3 étapes simples</span>
+      <span class="en">3 simple steps</span>
+      <span class="de">3 einfache Schritte</span>
+    </h2>
+    <p class="info-intro">
+      <span class="fr">Pas de paiement en ligne, pas de complication. Vous nous écrivez, nous vous répondons, et ensemble nous préparons votre immersion.</span>
+      <span class="en">No online payment, no hassle. You write to us, we reply, and together we prepare your immersion.</span>
+      <span class="de">Keine Online-Zahlung, kein Aufwand. Sie schreiben uns, wir antworten, und gemeinsam bereiten wir Ihre Eintauchen vor.</span>
+    </p>
+
+    <p class="steps-title fr">Processus de réservation</p>
+    <p class="steps-title en">Booking process</p>
+    <p class="steps-title de">Buchungsprozess</p>
+
+    <div class="steps-list">
+      <div class="step-row">
+        <div class="step-num-wrap">
+          <div class="step-num">1</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <p class="step-label fr">Envoyez votre demande</p>
+          <p class="step-label en">Send your request</p>
+          <p class="step-label de">Anfrage senden</p>
+          <p class="step-desc fr">Remplissez le formulaire avec votre prestation souhaitée, la date et le nombre de participants.</p>
+          <p class="step-desc en">Fill in the form with your desired service, date and number of participants.</p>
+          <p class="step-desc de">Füllen Sie das Formular mit Ihrer gewünschten Leistung, Datum und Teilnehmerzahl aus.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num-wrap">
+          <div class="step-num">2</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <p class="step-label fr">Nous vous confirmons</p>
+          <p class="step-label en">We confirm your booking</p>
+          <p class="step-label de">Wir bestätigen Ihre Buchung</p>
+          <p class="step-desc fr">Brenda vous répond sous 24h avec la confirmation, les détails pratiques et le point de rendez-vous.</p>
+          <p class="step-desc en">Brenda replies within 24h with confirmation, practical details and the meeting point.</p>
+          <p class="step-desc de">Brenda antwortet innerhalb von 24h mit Bestätigung, praktischen Details und dem Treffpunkt.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num-wrap">
+          <div class="step-num">3</div>
+        </div>
+        <div class="step-body">
+          <p class="step-label fr">Vivez l'expérience</p>
+          <p class="step-label en">Live the experience</p>
+          <p class="step-label de">Das Erlebnis genießen</p>
+          <p class="step-desc fr">Arrivez le jour J, prêt à vous immerger dans la culture polynésienne ancestrale de Moorea.</p>
+          <p class="step-desc en">Arrive on the day, ready to immerse yourself in the ancestral Polynesian culture of Moorea.</p>
+          <p class="step-desc de">Erscheinen Sie am Tag bereit, sich in die polynesische Ahnenkultur von Moorea einzutauchen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact box -->
+    <div class="contact-box">
+      <p class="contact-box-title fr">Préférez-vous nous appeler ?</p>
+      <p class="contact-box-title en">Prefer to call us?</p>
+      <p class="contact-box-title de">Lieber anrufen?</p>
+      <div class="contact-row">
+        <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+        <a href="tel:+68989420610">+689 89 420 610</a>
+      </div>
+      <div class="contact-row">
+        <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+        <a href="mailto:tupunakultur@gmail.com">tupunakultur@gmail.com</a>
+      </div>
+      <div class="contact-row" style="align-items:flex-start">
+        <ion-icon name="time-outline" aria-hidden="true" style="margin-top:2px"></ion-icon>
+        <span class="fr">Lun — Ven, 9h00 — 18h00 (heure Polynésie)</span>
+        <span class="en">Mon — Fri, 9:00 AM — 6:00 PM (Polynesia time)</span>
+        <span class="de">Mo — Fr, 9:00 — 18:00 Uhr (Polynesien-Zeit)</span>
+      </div>
+      <div class="contact-row" style="align-items:flex-start">
+        <ion-icon name="location-outline" aria-hidden="true" style="margin-top:2px"></ion-icon>
+        <span>pk 23 Papetoai c/mer, Moorea 98728</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- RIGHT — Booking form -->
+  <div class="form-card reveal reveal-delay-1">
+    <h2 class="form-card-title">
+      <span class="fr">Formulaire de réservation</span>
+      <span class="en">Booking Form</span>
+      <span class="de">Buchungsformular</span>
+    </h2>
+    <p class="form-card-sub">
+      <span class="fr">Tous les champs marqués d'un astérisque sont obligatoires.</span>
+      <span class="en">All fields marked with an asterisk are required.</span>
+      <span class="de">Alle mit einem Sternchen markierten Felder sind Pflichtfelder.</span>
+    </p>
+
+    <p class="required-note">
+      <ion-icon name="information-circle-outline" aria-hidden="true"></ion-icon>
+      <span class="fr">Aucun paiement n'est requis à cette étape — confirmation par email sous 24h.</span>
+      <span class="en">No payment required at this stage — email confirmation within 24 hours.</span>
+      <span class="de">Keine Zahlung in dieser Phase — E-Mail-Bestätigung innerhalb von 24 Stunden.</span>
+    </p>
+
+    <form id="booking-form" novalidate>
+
+      <!-- SECTION 1 — Coordonnées -->
+      <div class="form-section">
+        <p class="form-section-label">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          <span class="fr">Vos coordonnées</span>
+          <span class="en">Your details</span>
+          <span class="de">Ihre Angaben</span>
+        </p>
+        <div class="form-section-divider"></div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">
+              <span class="fr">Prénom</span>
+              <span class="en">First name</span>
+              <span class="de">Vorname</span>
+              <span class="req" aria-hidden="true">*</span>
+            </label>
+            <input type="text" id="fname" name="fname" autocomplete="given-name"
+              placeholder="Marie" required aria-required="true">
+            <p class="field-error" id="fname-error" role="alert">
+              <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+              <span class="fr">Ce champ est obligatoire.</span>
+              <span class="en">This field is required.</span>
+              <span class="de">Dieses Feld ist erforderlich.</span>
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="lname">
+              <span class="fr">Nom</span>
+              <span class="en">Last name</span>
+              <span class="de">Nachname</span>
+              <span class="req" aria-hidden="true">*</span>
+            </label>
+            <input type="text" id="lname" name="lname" autocomplete="family-name"
+              placeholder="Dupont" required aria-required="true">
+            <p class="field-error" id="lname-error" role="alert">
+              <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+              <span class="fr">Ce champ est obligatoire.</span>
+              <span class="en">This field is required.</span>
+              <span class="de">Dieses Feld ist erforderlich.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">
+              Email <span class="req" aria-hidden="true">*</span>
+            </label>
+            <input type="email" id="email" name="email" autocomplete="email"
+              placeholder="marie@email.com" required aria-required="true">
+            <p class="field-error" id="email-error" role="alert">
+              <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+              <span class="fr">Adresse email invalide.</span>
+              <span class="en">Invalid email address.</span>
+              <span class="de">Ungültige E-Mail-Adresse.</span>
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="phone">
+              <span class="fr">Téléphone</span>
+              <span class="en">Phone</span>
+              <span class="de">Telefon</span>
+            </label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel"
+              placeholder="+689 XX XX XX XX">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nationality">
+            <span class="fr">Nationalité / Pays de résidence</span>
+            <span class="en">Nationality / Country of residence</span>
+            <span class="de">Nationalität / Wohnland</span>
+          </label>
+          <input type="text" id="nationality" name="nationality"
+            placeholder="France, Allemagne, USA...">
+        </div>
+      </div>
+
+      <!-- SECTION 2 — Prestation -->
+      <div class="form-section">
+        <p class="form-section-label">
+          <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+          <span class="fr">Prestation souhaitée</span>
+          <span class="en">Desired service</span>
+          <span class="de">Gewünschte Leistung</span>
+        </p>
+        <div class="form-section-divider"></div>
+
+        <div class="form-group">
+          <label>
+            <span class="fr">Choisissez votre expérience</span>
+            <span class="en">Choose your experience</span>
+            <span class="de">Wählen Sie Ihr Erlebnis</span>
+            <span class="req" aria-hidden="true">*</span>
+          </label>
+          <div class="service-cards" role="radiogroup">
+            <div class="service-card-opt" data-value="ateliers" onclick="selectService(this)" tabindex="0" role="radio" aria-checked="false">
+              <input type="radio" name="service" value="ateliers" id="svc-1" required>
+              <ion-icon class="sc-icon" name="flower-outline" aria-hidden="true"></ion-icon>
+              <p class="sc-name fr">Ateliers Traditionnels</p>
+              <p class="sc-name en">Traditional Workshops</p>
+              <p class="sc-name de">Traditionelle Workshops</p>
+              <ion-icon class="sc-check" name="checkmark-circle" aria-hidden="true"></ion-icon>
+            </div>
+            <div class="service-card-opt" data-value="immersion" onclick="selectService(this)" tabindex="0" role="radio" aria-checked="false">
+              <input type="radio" name="service" value="immersion" id="svc-2">
+              <ion-icon class="sc-icon" name="earth-outline" aria-hidden="true"></ion-icon>
+              <p class="sc-name fr">Immersion Culturelle</p>
+              <p class="sc-name en">Cultural Immersion</p>
+              <p class="sc-name de">Kulturelle Eintauchen</p>
+              <ion-icon class="sc-check" name="checkmark-circle" aria-hidden="true"></ion-icon>
+            </div>
+            <div class="service-card-opt" data-value="gastro" onclick="selectService(this)" tabindex="0" role="radio" aria-checked="false">
+              <input type="radio" name="service" value="gastro" id="svc-3">
+              <ion-icon class="sc-icon" name="restaurant-outline" aria-hidden="true"></ion-icon>
+              <p class="sc-name fr">Découverte Gastronomique</p>
+              <p class="sc-name en">Gastronomic Discovery</p>
+              <p class="sc-name de">Gastronomische Entdeckung</p>
+              <ion-icon class="sc-check" name="checkmark-circle" aria-hidden="true"></ion-icon>
+            </div>
+          </div>
+          <p class="field-error" id="service-error" role="alert">
+            <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+            <span class="fr">Veuillez sélectionner une prestation.</span>
+            <span class="en">Please select a service.</span>
+            <span class="de">Bitte wählen Sie eine Leistung.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- SECTION 3 — Date & Participants -->
+      <div class="form-section">
+        <p class="form-section-label">
+          <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+          <span class="fr">Date & Participants</span>
+          <span class="en">Date & Participants</span>
+          <span class="de">Datum & Teilnehmer</span>
+        </p>
+        <div class="form-section-divider"></div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">
+              <span class="fr">Date souhaitée</span>
+              <span class="en">Preferred date</span>
+              <span class="de">Gewünschtes Datum</span>
+              <span class="req" aria-hidden="true">*</span>
+            </label>
+            <input type="date" id="date" name="date" required aria-required="true">
+            <p class="datetime-note">
+              <ion-icon name="information-circle-outline" aria-hidden="true"></ion-icon>
+              <span class="fr">Minimum 48h à l'avance</span>
+              <span class="en">Minimum 48h in advance</span>
+              <span class="de">Mindestens 48h im Voraus</span>
+            </p>
+            <p class="field-error" id="date-error" role="alert">
+              <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+              <span class="fr">Veuillez choisir une date valide (au moins 48h).</span>
+              <span class="en">Please choose a valid date (at least 48h ahead).</span>
+              <span class="de">Bitte wählen Sie ein gültiges Datum (mindestens 48h).</span>
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="time">
+              <span class="fr">Heure préférée</span>
+              <span class="en">Preferred time</span>
+              <span class="de">Bevorzugte Uhrzeit</span>
+            </label>
+            <select id="time" name="time">
+              <option value="" class="fr">-- Choisir --</option>
+              <option value="" class="en">-- Choose --</option>
+              <option value="" class="de">-- Auswählen --</option>
+              <option value="9h00">9h00 — 11h00</option>
+              <option value="11h00">11h00 — 13h00</option>
+              <option value="14h00">14h00 — 16h00</option>
+              <option value="16h00">16h00 — 18h00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <span class="fr">Nombre de participants</span>
+            <span class="en">Number of participants</span>
+            <span class="de">Anzahl der Teilnehmer</span>
+            <span class="req" aria-hidden="true">*</span>
+          </label>
+          <div class="persons-stepper" role="group" aria-label="Nombre de participants">
+            <button type="button" class="stepper-btn" onclick="changePersons(-1)" aria-label="Diminuer">
+              <ion-icon name="remove-outline" aria-hidden="true"></ion-icon>
+            </button>
+            <div class="stepper-val" id="persons-display" aria-live="polite">1</div>
+            <button type="button" class="stepper-btn" onclick="changePersons(1)" aria-label="Augmenter">
+              <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+          <input type="hidden" id="persons-input" name="persons" value="1">
+        </div>
+      </div>
+
+      <!-- SECTION 4 — Message -->
+      <div class="form-section">
+        <p class="form-section-label">
+          <ion-icon name="chatbubble-outline" aria-hidden="true"></ion-icon>
+          <span class="fr">Message & Besoins spéciaux</span>
+          <span class="en">Message & Special needs</span>
+          <span class="de">Nachricht & Besondere Bedürfnisse</span>
+        </p>
+        <div class="form-section-divider"></div>
+        <div class="form-group">
+          <label for="message">
+            <span class="fr">Votre message</span>
+            <span class="en">Your message</span>
+            <span class="de">Ihre Nachricht</span>
+          </label>
+          <textarea id="message" name="message"
+            placeholder="Questions, allergie alimentaire, accessibilité, demande sur mesure..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="how">
+            <span class="fr">Comment nous avez-vous trouvés ?</span>
+            <span class="en">How did you find us?</span>
+            <span class="de">Wie haben Sie uns gefunden?</span>
+          </label>
+          <select id="how" name="how">
+            <option value=""></option>
+            <option value="search" class="fr">Moteur de recherche (Google...)</option>
+            <option value="search" class="en">Search engine (Google...)</option>
+            <option value="search" class="de">Suchmaschine (Google...)</option>
+            <option value="social" class="fr">Réseaux sociaux</option>
+            <option value="social" class="en">Social media</option>
+            <option value="social" class="de">Soziale Medien</option>
+            <option value="friend" class="fr">Bouche à oreille</option>
+            <option value="friend" class="en">Word of mouth</option>
+            <option value="friend" class="de">Mundpropaganda</option>
+            <option value="hotel" class="fr">Hôtel / Guide touristique</option>
+            <option value="hotel" class="en">Hotel / Travel guide</option>
+            <option value="hotel" class="de">Hotel / Reiseführer</option>
+            <option value="other" class="fr">Autre</option>
+            <option value="other" class="en">Other</option>
+            <option value="other" class="de">Sonstiges</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- CONSENT -->
+      <div class="form-group">
+        <div class="consent-row">
+          <input type="checkbox" id="consent" name="consent" required aria-required="true">
+          <label for="consent" class="consent-label">
+            <span class="fr">J'accepte que mes données soient utilisées uniquement pour le traitement de ma demande de réservation, conformément à la <a href="politique-confidentialite.html">politique de confidentialité</a>.</span>
+            <span class="en">I agree that my data will be used solely to process my booking request, in accordance with the <a href="politique-confidentialite.html">privacy policy</a>.</span>
+            <span class="de">Ich stimme zu, dass meine Daten ausschließlich zur Bearbeitung meiner Buchungsanfrage gemäß der <a href="politique-confidentialite.html">Datenschutzrichtlinie</a> verwendet werden.</span>
+          </label>
+        </div>
+        <p class="field-error" id="consent-error" role="alert">
+          <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+          <span class="fr">Vous devez accepter pour continuer.</span>
+          <span class="en">You must agree to continue.</span>
+          <span class="de">Sie müssen zustimmen, um fortzufahren.</span>
+        </p>
+      </div>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="btn-submit" id="submit-btn">
+        <ion-icon name="send-outline" aria-hidden="true"></ion-icon>
+        <span class="btn-text fr">Envoyer ma demande de réservation</span>
+        <span class="btn-text en">Send my booking request</span>
+        <span class="btn-text de">Buchungsanfrage senden</span>
+      </button>
+
+      <p class="submit-note">
+        <ion-icon name="lock-closed-outline" aria-hidden="true"></ion-icon>
+        <span class="fr">Données sécurisées — aucun paiement en ligne</span>
+        <span class="en">Secure data — no online payment</span>
+        <span class="de">Sichere Daten — keine Online-Zahlung</span>
+      </p>
+
+      <!-- Feedback messages -->
+      <div class="form-feedback success" id="form-success" role="status">
+        <ion-icon name="checkmark-circle-outline" aria-hidden="true"></ion-icon>
+        <div>
+          <p class="feedback-title fr">Demande envoyée avec succès !</p>
+          <p class="feedback-title en">Request sent successfully!</p>
+          <p class="feedback-title de">Anfrage erfolgreich gesendet!</p>
+          <p class="fr">Merci ! Brenda vous répondra par email sous 24h avec tous les détails de votre expérience polynésienne.</p>
+          <p class="en">Thank you! Brenda will reply by email within 24h with all the details of your Polynesian experience.</p>
+          <p class="de">Danke! Brenda wird Ihnen innerhalb von 24h per E-Mail mit allen Details Ihres polynesischen Erlebnisses antworten.</p>
+        </div>
+      </div>
+      <div class="form-feedback error-msg" id="form-error" role="alert">
+        <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+        <div>
+          <p class="feedback-title fr">Veuillez corriger les erreurs ci-dessus.</p>
+          <p class="feedback-title en">Please correct the errors above.</p>
+          <p class="feedback-title de">Bitte korrigieren Sie die obigen Fehler.</p>
+        </div>
+      </div>
+
+    </form>
+  </div><!-- /form-card -->
+</div><!-- /booking-layout -->
+
+<!-- ===== PRACTICAL INFO ===== -->
+<section class="practical-strip">
+  <div class="practical-inner">
+    <div class="prac-card reveal">
+      <ion-icon class="prac-icon" name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
+      <h3 class="prac-title fr">Sans engagement financier</h3>
+      <h3 class="prac-title en">No financial commitment</h3>
+      <h3 class="prac-title de">Keine finanzielle Verpflichtung</h3>
+      <p class="prac-body fr">Votre réservation est confirmée par email. Aucune carte bancaire, aucun prépaiement — vous réglez le jour de votre expérience.</p>
+      <p class="prac-body en">Your booking is confirmed by email. No credit card, no prepayment — you pay on the day of your experience.</p>
+      <p class="prac-body de">Ihre Buchung wird per E-Mail bestätigt. Keine Kreditkarte, keine Vorauszahlung — Sie zahlen am Tag Ihres Erlebnisses.</p>
+    </div>
+    <div class="prac-card reveal reveal-delay-1">
+      <ion-icon class="prac-icon" name="people-outline" aria-hidden="true"></ion-icon>
+      <h3 class="prac-title fr">Groupes & familles</h3>
+      <h3 class="prac-title en">Groups & families</h3>
+      <h3 class="prac-title de">Gruppen & Familien</h3>
+      <p class="prac-body fr">Nous accueillons les particuliers, familles et groupes. Pour les groupes de plus de 10 personnes, contactez-nous directement pour un devis personnalisé.</p>
+      <p class="prac-body en">We welcome individuals, families and groups. For groups of more than 10, contact us directly for a personalised quote.</p>
+      <p class="prac-body de">Wir heißen Einzelpersonen, Familien und Gruppen willkommen. Für Gruppen über 10 Personen kontaktieren Sie uns direkt für ein individuelles Angebot.</p>
+    </div>
+    <div class="prac-card reveal reveal-delay-2">
+      <ion-icon class="prac-icon" name="location-outline" aria-hidden="true"></ion-icon>
+      <h3 class="prac-title fr">Accès & localisation</h3>
+      <h3 class="prac-title en">Access & location</h3>
+      <h3 class="prac-title de">Zugang & Lage</h3>
+      <p class="prac-body fr">pk 23 Papetoai, côté mer, Moorea 98728. Accessible en voiture de location, scooter ou navette depuis le ferry. Parking disponible.</p>
+      <p class="prac-body en">pk 23 Papetoai, seaside, Moorea 98728. Accessible by hire car, scooter or shuttle from the ferry. Parking available.</p>
+      <p class="prac-body de">pk 23 Papetoai, Meeresseite, Moorea 98728. Erreichbar mit Mietauto, Roller oder Shuttle vom Fähranleger. Parkplatz vorhanden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-strip">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <span class="sec-label fr">Questions fréquentes</span>
+      <span class="sec-label en">Frequently asked questions</span>
+      <span class="sec-label de">Häufig gestellte Fragen</span>
+      <h2 class="faq-title fr">Tout ce que vous devez savoir</h2>
+      <h2 class="faq-title en">Everything you need to know</h2>
+      <h2 class="faq-title de">Alles, was Sie wissen müssen</h2>
+    </div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q-text fr">Combien de temps à l'avance dois-je réserver ?</span>
+          <span class="faq-q-text en">How far in advance should I book?</span>
+          <span class="faq-q-text de">Wie weit im Voraus muss ich buchen?</span>
+          <ion-icon class="faq-icon" name="add-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <div class="faq-a">
+          <span class="fr">Nous recommandons de réserver au minimum 48h à l'avance. Pour les groupes ou les demandes spéciales, 1 semaine est idéal afin de tout préparer dans les meilleures conditions.</span>
+          <span class="en">We recommend booking at least 48h in advance. For groups or special requests, 1 week is ideal to prepare everything in the best conditions.</span>
+          <span class="de">Wir empfehlen, mindestens 48h im Voraus zu buchen. Für Gruppen oder besondere Wünsche ist 1 Woche ideal, um alles in den besten Bedingungen vorzubereiten.</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q-text fr">Les prestations sont-elles disponibles en anglais et en allemand ?</span>
+          <span class="faq-q-text en">Are services available in English and German?</span>
+          <span class="faq-q-text de">Sind die Leistungen auf Englisch und Deutsch verfügbar?</span>
+          <ion-icon class="faq-icon" name="add-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <div class="faq-a">
+          <span class="fr">Oui, toutes nos prestations sont proposées en français, en anglais et en allemand. Précisez simplement votre langue préférée lors de votre réservation.</span>
+          <span class="en">Yes, all our services are available in French, English and German. Simply specify your preferred language when booking.</span>
+          <span class="de">Ja, alle unsere Leistungen werden auf Französisch, Englisch und Deutsch angeboten. Geben Sie bei der Buchung einfach Ihre bevorzugte Sprache an.</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q-text fr">Puis-je annuler ou reporter ma réservation ?</span>
+          <span class="faq-q-text en">Can I cancel or reschedule my booking?</span>
+          <span class="faq-q-text de">Kann ich meine Buchung stornieren oder verschieben?</span>
+          <ion-icon class="faq-icon" name="add-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <div class="faq-a">
+          <span class="fr">Oui, vous pouvez annuler ou reporter gratuitement jusqu'à 24h avant votre expérience. Contactez-nous simplement par email ou téléphone.</span>
+          <span class="en">Yes, you can cancel or reschedule free of charge up to 24h before your experience. Simply contact us by email or phone.</span>
+          <span class="de">Ja, Sie können bis zu 24h vor Ihrem Erlebnis kostenlos stornieren oder verschieben. Kontaktieren Sie uns einfach per E-Mail oder Telefon.</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q-text fr">Les enfants sont-ils bienvenus ?</span>
+          <span class="faq-q-text en">Are children welcome?</span>
+          <span class="faq-q-text de">Sind Kinder willkommen?</span>
+          <ion-icon class="faq-icon" name="add-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <div class="faq-a">
+          <span class="fr">Absolument ! Nos ateliers sont adaptés à tous les âges. Les enfants adorent particulièrement les ateliers de tressage et la découverte gastronomique. Mentionnez les âges dans votre message pour que nous adaptions l'activité.</span>
+          <span class="en">Absolutely! Our workshops are suitable for all ages. Children particularly love the weaving workshops and gastronomic discovery. Mention ages in your message so we can adapt the activity.</span>
+          <span class="de">Absolut! Unsere Workshops sind für alle Altersgruppen geeignet. Kinder lieben besonders die Flechtworkshops und die gastronomische Entdeckung. Erwähnen Sie die Altersgruppen in Ihrer Nachricht, damit wir die Aktivität anpassen können.</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q-text fr">Que dois-je apporter le jour J ?</span>
+          <span class="faq-q-text en">What should I bring on the day?</span>
+          <span class="faq-q-text de">Was sollte ich am Tag mitbringen?</span>
+          <ion-icon class="faq-icon" name="add-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <div class="faq-a">
+          <span class="fr">Des vêtements confortables et légers, de la crème solaire, votre bonne humeur et votre curiosité ! Tout le matériel nécessaire pour les ateliers est fourni sur place par Brenda.</span>
+          <span class="en">Comfortable, light clothing, sunscreen, your good mood and curiosity! All materials needed for the workshops are provided on site by Brenda.</span>
+          <span class="de">Bequeme, leichte Kleidung, Sonnencreme, gute Laune und Neugier! Alle für die Workshops benötigten Materialien werden vor Ort von Brenda bereitgestellt.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom:18px;display:flex;align-items:center;gap:13px;">
+        <div class="logo-ring">T</div>
+        <div class="logo-words">
+          <span class="logo-name">Tamaeva</span>
+          <span class="logo-tagline">Tupuna Kultur</span>
+        </div>
+      </a>
+      <p class="footer-brand-desc fr">Tamaeva est là pour vous faire apprécier la culture polynésienne sous toutes ses formes à Moorea.</p>
+      <p class="footer-brand-desc en">Tamaeva is here to help you appreciate Polynesian culture in all its forms in Moorea.</p>
+      <p class="footer-brand-desc de">Tamaeva ist hier, um Ihnen zu helfen, die polynesische Kultur in all ihren Formen auf Moorea zu schätzen.</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="fr">Navigation</h4><h4 class="en">Navigation</h4><h4 class="de">Navigation</h4>
+      <ul>
+        <li><a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span><span class="de">Startseite</span></a></li>
+        <li><a href="about.html"><span class="fr">À propos</span><span class="en">About</span><span class="de">Über uns</span></a></li>
+        <li><a href="services.html"><span class="fr">Prestations</span><span class="en">Services</span><span class="de">Leistungen</span></a></li>
+        <li><a href="actualites.html"><span class="fr">Actualités</span><span class="en">News</span><span class="de">Aktuelles</span></a></li>
+        <li><a href="contact.html"><span class="fr">Contact</span><span class="en">Contact</span><span class="de">Kontakt</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="fr">Horaires</h4><h4 class="en">Hours</h4><h4 class="de">Öffnungszeiten</h4>
+      <p class="fr">Lun — Ven<br>9h00 — 18h00</p>
+      <p class="en">Mon — Fri<br>9:00 AM — 6:00 PM</p>
+      <p class="de">Mo — Fr<br>9:00 — 18:00 Uhr</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="fr">Contact</h4><h4 class="en">Contact</h4><h4 class="de">Kontakt</h4>
+      <div class="footer-contact-row"><ion-icon name="call-outline"></ion-icon><span>+689 89 420 610</span></div>
+      <div class="footer-contact-row"><ion-icon name="mail-outline"></ion-icon><span>tupunakultur@gmail.com</span></div>
+      <div class="footer-contact-row" style="align-items:flex-start"><ion-icon name="location-outline" style="margin-top:2px"></ion-icon><span>pk 23 Papetoai c/mer<br>Moorea 98728</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="fr">&copy; 2026 Tamaeva &bull; Tupuna Kultur &bull; Tous droits réservés &bull;</p>
+    <p class="en">&copy; 2026 Tamaeva &bull; Tupuna Kultur &bull; All rights reserved &bull;</p>
+    <p class="de">&copy; 2026 Tamaeva &bull; Tupuna Kultur &bull; Alle Rechte vorbehalten &bull;</p>
+    <a href="politique-confidentialite.html"><span class="fr">Politique de confidentialité</span><span class="en">Privacy Policy</span><span class="de">Datenschutz</span></a>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+/* --------------------------------------------------
+   LANGUAGE SYSTEM
+-------------------------------------------------- */
+var SUPPORTED = ['fr','en','de'];
+var currentLang = 'fr';
+
+function getLangFromURL() {
+  var p = new URLSearchParams(window.location.search);
+  var l = p.get('lang');
+  return SUPPORTED.indexOf(l) !== -1 ? l : null;
+}
+
+function setLang(lang) {
+  if (SUPPORTED.indexOf(lang) === -1) lang = 'fr';
+  currentLang = lang;
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+  try { localStorage.setItem('tamaeva_lang', lang); } catch(e) {}
+  var url = new URL(window.location.href);
+  url.searchParams.set('lang', lang);
+  history.replaceState(null, '', url.toString());
+  document.querySelectorAll('a[href]').forEach(function(a) {
+    var href = a.getAttribute('href');
+    if (href && href.indexOf('.html') !== -1 && href.indexOf('//') === -1) {
+      try {
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('lang', lang);
+        a.href = u.pathname + u.search + u.hash;
+      } catch(e) {}
+    }
+  });
+}
+
+(function() {
+  var lang = getLangFromURL();
+  if (!lang) { try { lang = localStorage.getItem('tamaeva_lang'); } catch(e) {} }
+  if (!lang || SUPPORTED.indexOf(lang) === -1) lang = 'fr';
+  setLang(lang);
+})();
+
+/* --------------------------------------------------
+   STICKY HEADER — applique .scrolled sur le site-header
+   Le fond sombre apparaît uniquement sur la barre de nav au scroll
+-------------------------------------------------- */
+var header = document.getElementById('site-header');
+window.addEventListener('scroll', function() {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* --------------------------------------------------
+   MOBILE DRAWER
+-------------------------------------------------- */
+var burger = document.getElementById('burger');
+var drawer = document.getElementById('mobile-drawer');
+var overlay = document.getElementById('drawer-overlay');
+function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); burger.classList.add('open'); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+burger.addEventListener('click', function() { drawer.classList.contains('open') ? closeDrawer() : openDrawer(); });
+document.addEventListener('keydown', function(e) { if (e.key==='Escape') closeDrawer(); });
+
+/* --------------------------------------------------
+   REVEAL ON SCROLL
+-------------------------------------------------- */
+var revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  revealEls.forEach(function(el) { obs.observe(el); });
+} else {
+  revealEls.forEach(function(el) { el.classList.add('visible'); });
+}
+
+/* --------------------------------------------------
+   SERVICE CARD SELECTOR
+-------------------------------------------------- */
+function selectService(card) {
+  document.querySelectorAll('.service-card-opt').forEach(function(c) {
+    c.classList.remove('selected');
+    c.setAttribute('aria-checked', 'false');
+    c.querySelector('input[type="radio"]').checked = false;
+  });
+  card.classList.add('selected');
+  card.setAttribute('aria-checked', 'true');
+  card.querySelector('input[type="radio"]').checked = true;
+  clearError('service-error');
+  document.querySelectorAll('.service-card-opt').forEach(function(c) { c.classList.remove('error'); });
+}
+document.querySelectorAll('.service-card-opt').forEach(function(card) {
+  card.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectService(card); }
+  });
+});
+
+/* --------------------------------------------------
+   PERSONS STEPPER
+-------------------------------------------------- */
+var personsVal = 1;
+function changePersons(delta) {
+  personsVal = Math.max(1, Math.min(20, personsVal + delta));
+  document.getElementById('persons-display').textContent = personsVal;
+  document.getElementById('persons-input').value = personsVal;
+}
+
+/* --------------------------------------------------
+   DATE — set minimum (48h from now)
+-------------------------------------------------- */
+(function() {
+  var d = new Date();
+  d.setDate(d.getDate() + 2);
+  document.getElementById('date').min = d.toISOString().split('T')[0];
+})();
+
+/* --------------------------------------------------
+   FAQ ACCORDION
+-------------------------------------------------- */
+function toggleFaq(btn) {
+  var item = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i) {
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+/* --------------------------------------------------
+   FORM VALIDATION & SUBMIT
+-------------------------------------------------- */
+function showError(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.add('visible');
+}
+function clearError(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.remove('visible');
+}
+function setFieldError(fieldId, errId, hasError) {
+  var field = document.getElementById(fieldId);
+  if (field) field.classList.toggle('error', hasError);
+  if (hasError) showError(errId); else clearError(errId);
+}
+
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  var fname   = document.getElementById('fname').value.trim();
+  var lname   = document.getElementById('lname').value.trim();
+  var email   = document.getElementById('email').value.trim();
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  var date    = document.getElementById('date').value;
+  var service = document.querySelector('input[name="service"]:checked');
+  var consent = document.getElementById('consent').checked;
+
+  var hasError = false;
+
+  setFieldError('fname',   'fname-error',   !fname);   if (!fname)   hasError = true;
+  setFieldError('lname',   'lname-error',   !lname);   if (!lname)   hasError = true;
+  setFieldError('email',   'email-error',   !emailOk); if (!emailOk) hasError = true;
+  setFieldError('date',    'date-error',    !date);     if (!date)    hasError = true;
+
+  if (!service) {
+    showError('service-error');
+    document.querySelectorAll('.service-card-opt').forEach(function(c) { c.classList.add('error'); });
+    hasError = true;
+  }
+
+  if (!consent) { showError('consent-error'); hasError = true; }
+
+  var errFeedback = document.getElementById('form-error');
+  var okFeedback  = document.getElementById('form-success');
+
+  if (hasError) {
+    errFeedback.classList.add('visible');
+    okFeedback.classList.remove('visible');
+    errFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
+  }
+
+  errFeedback.classList.remove('visible');
+
+  /* Show loading state */
+  var btn = document.getElementById('submit-btn');
+  btn.classList.add('loading');
+  btn.innerHTML = '<div class="spinner"></div>';
+
+  /* Build mailto and simulate async */
+  var svcLabel = service ? service.value : '';
+  var body = [
+    'Prénom: ' + fname,
+    'Nom: ' + lname,
+    'Email: ' + email,
+    'Téléphone: ' + (document.getElementById('phone').value || '—'),
+    'Nationalité: ' + (document.getElementById('nationality').value || '—'),
+    'Prestation: ' + svcLabel,
+    'Date: ' + date,
+    'Heure: ' + (document.getElementById('time').value || '—'),
+    'Participants: ' + personsVal,
+    'Message: ' + (document.getElementById('message').value || '—'),
+    'Source: ' + (document.getElementById('how').value || '—')
+  ].join('\n');
+
+  setTimeout(function() {
+    window.location.href = 'mailto:tupunakultur@gmail.com'
+      + '?subject=' + encodeURIComponent('Demande de réservation Tamaeva — ' + fname + ' ' + lname)
+      + '&body=' + encodeURIComponent(body);
+
+    btn.classList.remove('loading');
+    btn.innerHTML = '<ion-icon name="send-outline" aria-hidden="true"></ion-icon>'
+      + '<span class="btn-text fr">Envoyer ma demande de réservation</span>'
+      + '<span class="btn-text en">Send my booking request</span>'
+      + '<span class="btn-text de">Buchungsanfrage senden</span>';
+    setLang(currentLang);
+
+    okFeedback.classList.add('visible');
+    okFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    document.getElementById('booking-form').reset();
+    personsVal = 1;
+    document.getElementById('persons-display').textContent = '1';
+    document.getElementById('persons-input').value = '1';
+    document.querySelectorAll('.service-card-opt').forEach(function(c) {
+      c.classList.remove('selected','error');
+      c.setAttribute('aria-checked','false');
+    });
+  }, 800);
+});
+
+/* Live validation — clear errors on input */
+['fname','lname','email','date'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', function() {
+    el.classList.remove('error');
+    clearError(id + '-error');
+    document.getElementById('form-error').classList.remove('visible');
+  });
+});
+document.getElementById('consent').addEventListener('change', function() {
+  clearError('consent-error');
+});
+</script>
+
+</body>
+</html>
